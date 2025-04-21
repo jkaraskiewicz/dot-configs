@@ -1,0 +1,16 @@
+modules:
+- name: neovim
+  directory: neovim
+  versions:
+  - name: default
+  - name: simple
+  current_version:
+    name: simple
+current_module:
+  name: neovim
+  directory: neovim
+  versions:
+  - name: default
+  - name: simple
+  current_version:
+    name: default

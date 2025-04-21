@@ -1,0 +1,11 @@
+module_bindings:
+  neovim:
+    version_bindings:
+      default:
+        entries:
+        - internal_path: dot_config/nvim
+          external_path: /Users/jay/.config/nvim
+      simple:
+        entries:
+        - internal_path: dot_config/nvim
+          external_path: /Users/jay/.config/nvim
