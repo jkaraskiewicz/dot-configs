@@ -33,6 +33,7 @@ pcall(require, 'plugins.config.mini-splitjoin')
 pcall(require, 'plugins.config.mini-starter')
 pcall(require, 'plugins.config.mini-statusline')
 pcall(require, 'plugins.config.mini-surround')
+pcall(require, 'plugins.config.mini-trailspace')
 
 -- Other plugins
 pcall(require, 'plugins.config.arrow')

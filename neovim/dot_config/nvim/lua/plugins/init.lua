@@ -49,6 +49,9 @@ add('echasnovski/mini.surround')
 -- Extra: Additional extensions for other mini plugins
 add('echasnovski/mini.extra')
 
+-- Trailspace: Highlight/remove trailing white spaces
+add('echasnovski/mini.trailspace')
+
 -- === Other plugins ===
 
 -- Treesitter: Better syntax highlighting & parsing
