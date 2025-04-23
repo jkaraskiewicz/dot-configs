@@ -57,13 +57,15 @@ add('echasnovski/mini.trailspace')
 -- Treesitter: Better syntax highlighting & parsing
 add({ source = 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' })
 
--- Colorcheme: darcula-dark
+-- Color schemes
 add({
   source = 'xiantang/darcula-dark.nvim',
   depends = {
     'nvim-treesitter/nvim-treesitter',
   },
 })
+
+add('rebelot/kanagawa.nvim')
 
 -- Neo-tree
 add({
@@ -78,9 +80,6 @@ add({
 
 -- mason (for LSPs)
 add('williamboman/mason.nvim')
-
--- OSC52 - Shared clipboard
-add('ojroques/nvim-osc52')
 
 -- nvim-various-textobjects
 add('chrisgrieser/nvim-various-textobjs')

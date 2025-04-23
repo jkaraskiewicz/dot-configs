@@ -53,3 +53,15 @@ opt.timeoutlen = 300 -- Lower timeout for key sequences
 
 -- ## Sessions ##
 opt.sessionoptions:remove('blank') -- Don't save blank buffers (like Neo-tree)
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}

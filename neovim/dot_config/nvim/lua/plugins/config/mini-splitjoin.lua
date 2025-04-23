@@ -1,9 +1,13 @@
 -- Splits function call args to multiple lines or to a single line with gS
 
-local status_ok, mini_splitjoin = pcall(require, 'mini.splitjoin')
-if not status_ok then
-  print('mini.splitjoin not found')
-  return
-end
+MiniDeps.later(
+  function()
+    local status_ok, mini_splitjoin = pcall(require, 'mini.splitjoin')
+    if not status_ok then
+      print('mini.splitjoin not found')
+      return
+    end
 
-mini_splitjoin.setup()
+    mini_splitjoin.setup()
+  end
+)

@@ -75,13 +75,6 @@ map('n', '<leader>rq', function()
   vim.diagnostic.setqflist({ open = true })
 end, { desc = 'LSP quickfix' })
 
-if not vim.tbl_isempty(vim.lsp.get_clients()) then
-  map('n', '<leader>rf', function() vim.lsp.buf.format() end,
-    { desc = 'Format buffer' })
-else
-  map('n', '<leader>rf', 'gg=G<C-o>', { desc = 'Format buffer' })
-end
-
 -- General
 map('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear search' })
 map('i', '<C-Space>', 'require("mini.completion").complete()', {

@@ -10,4 +10,4 @@ end
 
 darcula.setup()
 
--- Load the colorscheme pcall(vim.cmd, [[colorscheme darcula-dark]])
+vim.cmd [[colorscheme kanagawa]]

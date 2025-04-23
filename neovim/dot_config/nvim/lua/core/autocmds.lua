@@ -1,5 +1,4 @@
 local function lsp_on_attach(client, bufnr)
-  print('LSP client attached: ' .. client.name)
   -- Setup keymaps and other buffer-local settings
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
     {
@@ -19,6 +18,12 @@ local function lsp_on_attach(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references,
     { buffer = bufnr, noremap = true, silent = true, desc = 'Go to references' })
   -- Add other setup like highlighting, etc.
+  if not vim.tbl_isempty(vim.lsp.get_clients()) then
+    vim.keymap.set('n', '<leader>rf', function() vim.lsp.buf.format() end,
+      { desc = 'Format buffer' })
+  else
+    vim.keymap.set('n', '<leader>rf', 'gg=G<C-o>', { desc = 'Format buffer' })
+  end
 end
 
 -- Create the Autocommand to call the on_attach function
@@ -39,4 +44,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     require('vim.hl').on_yank({ timeout = 250 })
   end,
   group = vim.api.nvim_create_augroup('highlight_yank', {}),
+})
+
+-- Format on save
+vim.api.nvim_create_autocmd('BufWrite', {
+  pattern = '*',
+  callback = function()
+    local keys = vim.api.nvim_replace_termcodes('<leader>rf', true, false, true)
+    vim.api.nvim_feedkeys(keys, 'm', false)
+  end,
+  group = vim.api.nvim_create_augroup('format_buffer', {}),
 })
