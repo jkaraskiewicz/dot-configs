@@ -1,0 +1,119 @@
+-- Replaced by 'relatedfiles' glugin for work purposes
+return {}
+-- return {
+--   'rgroli/other.nvim',
+--   keys = {
+--     { '<leader>oo', '<cmd>:Other<cr>', desc = 'Other' },
+--   },
+--   init = function()
+--     require('other-nvim').setup({
+--       rememberBuffers = false,
+--       showMissingFiles = false,
+--       mappings = {
+--         {
+--           pattern = '(.*)/(.*)%.ts',
+--           target = {
+--             {
+--               target = '%1/%2_test.ts',
+--               context = 'test',
+--             },
+--             {
+--               target = '%1/%2.ng.html',
+--               context = 'template',
+--             },
+--             {
+--               target = '%1/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/(.*)%.ng%.html',
+--           target = {
+--             {
+--               target = '%1/%2_test.ts',
+--               context = 'test',
+--             },
+--             {
+--               target = '%1/%2.ts',
+--               context = 'controller',
+--             },
+--             {
+--               target = '%1/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/(.*)_test%.ts',
+--           target = {
+--             {
+--               target = '%1/%2.ts',
+--               context = 'controller',
+--             },
+--             {
+--               target = '%1/%2.ng.html',
+--               context = 'template',
+--             },
+--             {
+--               target = '%1/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/java/(.*)/(.*)%.java',
+--           target = {
+--             {
+--               target = '%1/javatests/%2/%3Test.java',
+--               context = 'test',
+--             },
+--             {
+--               target = '%1/java/%2/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/javatests/(.*)/(.*)Test%.java',
+--           target = {
+--             {
+--               target = '%1/java/%2/%3.java',
+--               context = 'controller',
+--             },
+--             {
+--               target = '%1/javatests/%2/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/java/(.*)/(.*)%.kt',
+--           target = {
+--             {
+--               target = '%1/javatests/%2/%3Test.kt',
+--               context = 'test',
+--             },
+--             {
+--               target = '%1/java/%2/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--         {
+--           pattern = '(.*)/javatests/(.*)/(.*)Test%.kt',
+--           target = {
+--             {
+--               target = '%1/java/%2/%3.kt',
+--               context = 'controller',
+--             },
+--             {
+--               target = '%1/javatests/%2/BUILD',
+--               context = 'build',
+--             },
+--           },
+--         },
+--       },
+--     })
+--   end,
+-- }
