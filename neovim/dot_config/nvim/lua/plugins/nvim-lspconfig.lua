@@ -20,6 +20,7 @@ return {
         ensure_installed = {
           'angularls',
           'bashls',
+          'jdtls',
           'jsonls',
           'kotlin_language_server',
           'lua_ls',
@@ -28,6 +29,6 @@ return {
           'yamlls',
         },
       })
-    end
+    end,
   },
 }

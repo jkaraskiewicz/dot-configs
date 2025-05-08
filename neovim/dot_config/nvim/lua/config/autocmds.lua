@@ -1,27 +1,27 @@
 local function lsp_on_attach(client, bufnr)
   -- Setup keymaps and other buffer-local settings
-  vim.keymap.set('n', 'grd', '<cmd>Pick lsp scope=\'definition\'<cr>',
+  vim.keymap.set('n', 'grd', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Definition',
     })
-  vim.keymap.set('n', 'grr', '<cmd>Pick lsp scope=\'references\'<cr>',
+  vim.keymap.set('n', 'grr', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'References',
     })
-  vim.keymap.set('n', 'gri', '<cmd>Pick lsp scope=\'implementation\'<cr>',
+  vim.keymap.set('n', 'gri', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Implementation',
     })
-  vim.keymap.set('n', 'grs', '<cmd>Pick lsp scope=\'document_symbol\'<cr>',
+  vim.keymap.set('n', 'grs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
     {
       buffer = bufnr,
       noremap = true,
