@@ -1,8 +1,12 @@
 return {
-  'rebelot/kanagawa.nvim',
-  name = 'kanagawa',
+  'lmantw/themify.nvim',
+  lazy = false,
   priority = 1000,
-  init = function()
-    vim.cmd [[colorscheme kanagawa]]
-  end,
+  config = {
+    'rebelot/kanagawa.nvim',
+    'xiantang/darcula-dark.nvim',
+  },
+  keys = {
+    { '<leader>mc', ':Themify<cr>', desc = 'Color schemes' },
+  },
 }
