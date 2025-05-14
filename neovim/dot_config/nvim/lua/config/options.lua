@@ -60,3 +60,7 @@ opt.sessionoptions:remove('blank') -- Don't save blank buffers (like Neo-tree)
 if vim.env.TMUX ~= nil then
   vim.g.clipboard = 'tmux'
 end
+
+-- ## Fix the issue with treesitter syntax highlighting flickering ##
+-- (https://github.com/neovim/neovim/issues/32660)
+vim.g._ts_force_sync_parsing = true
