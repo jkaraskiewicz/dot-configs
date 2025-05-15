@@ -36,3 +36,5 @@ map('i', '<C-k>', '<Up>', { desc = 'Move cursor up' })
 -- Terminal
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
+-- Better movement / editing
+map('n', 'gf', 'dlph', { desc = 'Swap letters' })
