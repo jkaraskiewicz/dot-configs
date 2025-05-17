@@ -6,7 +6,7 @@ return {
     { '<leader>fg', ':Pick grep_live<CR>', desc = 'Find text (live grep)' },
     { '<leader>fb', ':Pick buffers<CR>',   desc = 'Find buffers' },
   },
-  config = function()
+  init = function()
     require('mini.pick').setup()
 
     -- Custom pick actions

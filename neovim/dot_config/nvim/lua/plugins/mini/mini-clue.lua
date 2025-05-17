@@ -36,7 +36,6 @@ return {
         { mode = 'x', keys = '<leader>s',  desc = '+Search' },
         { mode = 'n', keys = '<leader>r',  desc = '+Refactor' },
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
-        { mode = 'n', keys = '<leader>bl', desc = '+Language' },
         require('mini.clue').gen_clues.builtin_completion(),
         require('mini.clue').gen_clues.registers(),
         require('mini.clue').gen_clues.windows(),
