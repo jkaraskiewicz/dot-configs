@@ -35,3 +35,6 @@ require('lazy').setup({
     },
   },
 })
+
+-- Experimental messages UI
+require('vim._extui').enable({})
