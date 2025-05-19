@@ -18,6 +18,7 @@ return {
     'rebelot/kanagawa.nvim',
     'rockyzhang24/arctic.nvim',
     'sainnhe/gruvbox-material',
+    'sainnhe/sonokai',
     'wesleimp/min-theme.nvim',
     'xiantang/darcula-dark.nvim',
   },
