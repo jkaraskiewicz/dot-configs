@@ -1,7 +1,7 @@
 return {
   'gbprod/cutlass.nvim',
   opts = {
-    exclude = { 'nd' },
+    exclude = { 'nd', 'xd' },
   },
 }
 
