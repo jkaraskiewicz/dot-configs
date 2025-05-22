@@ -85,3 +85,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = vim.api.nvim_create_augroup('highlight_yank', {}),
 })
+
+-- Set non-standard file types
+vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+  pattern = '*.abs',
+  callback = function()
+    vim.bo.filetype = 'abs'
+  end
+})

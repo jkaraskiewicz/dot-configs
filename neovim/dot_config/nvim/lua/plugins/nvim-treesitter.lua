@@ -6,8 +6,20 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
+    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+    parser_config.abs = {
+      install_info = {
+        url = 'https://github.com/jkaraskiewicz/tree-sitter-abs',
+        files = { 'src/parser.c' },
+        branch = 'master',
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+    }
+
     require('nvim-treesitter.configs').setup({
       ensure_installed = {
+        'abs',
         'angular',
         'bash',
         'html',
