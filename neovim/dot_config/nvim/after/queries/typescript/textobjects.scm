@@ -1,5 +1,5 @@
 ; extends
 [
- (method_definition
+  (method_definition
     body: (statement_block) @method.inner)
 ] @method.outer
