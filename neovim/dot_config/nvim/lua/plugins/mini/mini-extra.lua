@@ -9,7 +9,11 @@ return {
     },
     {
       '<leader>fv',
-      function() require('mini.extra').pickers.visit_paths() end,
+      function()
+        require('mini.extra').pickers.visit_paths({
+          recency_weight = 1,
+        })
+      end,
       desc = 'Find in recent',
     },
     {
