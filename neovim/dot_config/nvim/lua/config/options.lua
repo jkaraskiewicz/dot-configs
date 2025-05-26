@@ -14,15 +14,16 @@ opt.cursorline = true -- Highlight the current line
 opt.colorcolumn = '80'
 
 -- ## Behavior ##
-opt.mouse = 'a'               -- Enable mouse support in all modes
-opt.clipboard = 'unnamedplus' -- Use system clipboard
-opt.ignorecase = true         -- Ignore case when searching
-opt.smartcase = true          -- Override ignorecase if search pattern has uppercase letters
-opt.splitright = true         -- Open vertical splits to the right
-opt.splitbelow = true         -- Open horizontal splits below
-opt.wrap = false              -- Don't wrap lines
-opt.linebreak = true          -- Wrap lines at convenient points if wrap is on
-o.hidden = true               -- Reuse a terminal session
+opt.mouse = 'a'                                 -- Enable mouse support in all modes
+opt.clipboard = 'unnamedplus'                   -- Use system clipboard
+opt.ignorecase = true                           -- Ignore case when searching
+opt.smartcase = true                            -- Override ignorecase if search pattern has uppercase letters
+opt.splitright = true                           -- Open vertical splits to the right
+opt.splitbelow = true                           -- Open horizontal splits below
+opt.wrap = false                                -- Don't wrap lines
+opt.linebreak = true                            -- Wrap lines at convenient points if wrap is on
+o.hidden = true                                 -- Reuse a terminal session
+o.completeopt = 'menuone,noselect,fuzzy,nosort' -- Fuzzy match in the completion window
 
 -- ## Indentation ##
 opt.expandtab = true -- Use spaces instead of tabs

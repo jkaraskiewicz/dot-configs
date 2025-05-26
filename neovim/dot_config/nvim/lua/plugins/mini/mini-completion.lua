@@ -2,7 +2,7 @@ return {
   'echasnovski/mini.completion',
   version = false,
   config = function()
-    local opts = { filtersort = 'prefix' }
+    local opts = { filtersort = 'fuzzy' }
     local process_items = function(items, base)
       local default_items = MiniCompletion.default_process_items(items, base, opts)
       local res = {}
