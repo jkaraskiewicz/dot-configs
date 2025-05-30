@@ -12,6 +12,7 @@ opt.list = true -- Show invisible characters
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- How to show invisible characters
 opt.cursorline = true -- Highlight the current line
 opt.colorcolumn = '80'
+opt.cmdheight = 0 -- hide command line
 
 -- ## Behavior ##
 opt.mouse = 'a'                                 -- Enable mouse support in all modes
