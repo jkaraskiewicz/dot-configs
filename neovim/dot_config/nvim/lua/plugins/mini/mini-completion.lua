@@ -20,6 +20,11 @@ return {
     end
 
     require('mini.completion').setup({
+      delay = {
+        completion = 300,
+        info = 200,
+        signature = 200,
+      },
       window = {
         info = { border = 'bold' },
         signature = { border = 'bold' },
