@@ -23,6 +23,7 @@ map('n', '<leader>rf', function() vim.lsp.buf.format() end, { desc = 'Format buf
 -- General
 map('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear search' })
 map('n', '<leader>mm', ':messages<cr>', { desc = 'Show messages' })
+map('n', '<leader>mr', ':restart<cr>', { desc = 'Restart neovim' })
 
 -- Stay in indent mode
 map('x', '<', '<gv', { desc = 'Indent left (Visual)' })
