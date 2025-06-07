@@ -1,5 +1,14 @@
 return {
-  cmd = { 'ngserver', '--stdio' },
+  cmd = {
+    "ngserver",
+    "--stdio",
+    "--tsProbeLocations",
+    "../..,?/node_modules",
+    "--ngProbeLocations",
+    "../..,?/node_modules",
+    "--angularCoreVersion",
+    ""
+  },
   filetypes = { 'typescript', 'html' },
   root_markers = {
     'angular.json',

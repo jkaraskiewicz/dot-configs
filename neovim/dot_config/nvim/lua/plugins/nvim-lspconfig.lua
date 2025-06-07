@@ -20,6 +20,7 @@ return {
         ensure_installed = {
           'angularls',
           'bashls',
+          'html',
           'jdtls',
           'jsonls',
           'kotlin_language_server',
