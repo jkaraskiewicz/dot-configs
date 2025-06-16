@@ -61,6 +61,7 @@ return {
     'rose-pine/neovim',
     'sainnhe/gruvbox-material',
     'sainnhe/sonokai',
+    'sam4llis/nvim-tundra',
     'shaunsingh/nord.nvim',
     'strange/strange.vim',
     'thesimonho/kanagawa-paper.nvim',
