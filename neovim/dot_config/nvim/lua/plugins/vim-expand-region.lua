@@ -1,5 +1,6 @@
 return {
   'terryma/vim-expand-region',
+  version = false,
   keys = {
     { 'v', mode = { 'x' }, '<Plug>(expand_region_expand)', desc = 'Expand region' },
     { 'V', mode = { 'x' }, '<Plug>(expand_region_shrink)', desc = 'Shrink region' },

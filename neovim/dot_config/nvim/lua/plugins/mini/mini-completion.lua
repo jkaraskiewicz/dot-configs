@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.completion',
   version = false,
+  event = 'VeryLazy',
   config = function()
     local opts = { filtersort = 'fuzzy' }
     local process_items = function(items, base)

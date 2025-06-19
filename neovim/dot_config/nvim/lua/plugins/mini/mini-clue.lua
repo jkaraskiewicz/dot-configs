@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.clue',
   version = false,
+  event = 'VeryLazy',
   config = function()
     require('mini.clue').setup({
       triggers = {
@@ -18,26 +19,26 @@ return {
         -- `s` key
         { mode = 'n', keys = 's' },
         { mode = 'x', keys = 's' },
+        -- `m` key
+        { mode = 'n', keys = 'm' },
+        { mode = 'x', keys = 'm' },
         -- `[`, `]`
         { mode = 'n', keys = '[' },
         { mode = 'n', keys = ']' },
       },
       clues = {
-        -- Operators, refactors (under 'g')
-        { mode = 'n', keys = 'go',         desc = '+Operators' },
-        { mode = 'x', keys = 'go',         desc = '+Operators' },
         { mode = 'n', keys = 'gr',         desc = '+Refactor' },
         { mode = 'x', keys = 'gr',         desc = '+Refactor' },
+        { mode = 'n', keys = 'grg',        desc = '+Global' },
 
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
         { mode = 'n', keys = '<leader>B',  desc = '+Bookmarks' },
         { mode = 'n', keys = '<leader>e',  desc = '+Explorer' },
         { mode = 'n', keys = '<leader>f',  desc = '+Find' },
-        { mode = 'x', keys = '<leader>f',  desc = '+Find' },
         { mode = 'n', keys = '<leader>fo', desc = '+Other' },
         { mode = 'x', keys = '<leader>fo', desc = '+Other' },
         { mode = 'n', keys = '<leader>m',  desc = '+Misc' },
-        { mode = 'n', keys = '<leader>r',  desc = '+Refactor' },
+        { mode = 'n', keys = '<leader>md', desc = '+Diff' },
         { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>s',  desc = '+Search' },
         { mode = 'x', keys = '<leader>s',  desc = '+Search' },
@@ -49,7 +50,7 @@ return {
         delay = 100,
         config = {
           width = 50,
-          border = 'double',
+          border = 'single',
         },
       },
     })

@@ -1,5 +1,6 @@
 return {
   'chrisgrieser/nvim-various-textobjs',
+  version = false,
   event = 'VeryLazy',
   opts = {
     keymaps = {

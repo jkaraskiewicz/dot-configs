@@ -1,5 +1,6 @@
 return {
   'ggandor/leap.nvim',
+  version = false,
   keys = {
     { ';', '<Plug>(leap)', mode = { 'n', 'x', 'o' } },
   },

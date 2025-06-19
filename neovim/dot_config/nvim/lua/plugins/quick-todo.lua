@@ -1,5 +1,6 @@
 return {
   'SyedAsimShah1/quick-todo.nvim',
+  version = false,
   config = function()
     require('quick-todo').setup({
       keys = {
@@ -11,7 +12,7 @@ return {
     {
       '<leader>mq',
       function() require('quick-todo').open_todo() end,
-      mode = { 'n', 'x' },
+      mode = { 'n' },
       desc = 'Quick todo',
     },
   },

@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.keymap',
   version = false,
+  event = 'VeryLazy',
   config = function()
     require('mini.keymap').setup()
 

@@ -27,6 +27,16 @@ return {
       desc = 'Keymaps',
     },
     {
+      '<leader>fog',
+      function() require('mini.extra').pickers.git_hunks() end,
+      desc = 'Git hunks',
+    },
+    {
+      '<leader>foj',
+      function() require('mini.extra').pickers.list({ scope = 'jump' }) end,
+      desc = 'Jumps',
+    },
+    {
       '<leader>fh',
       function() require('mini.extra').pickers.history() end,
       desc = 'Command history',

@@ -2,6 +2,7 @@ return {
   'echasnovski/mini.base16',
   version = false,
   enabled = false,
+  event = 'VeryLazy',
   config = function()
     require('mini.base16').setup({
       palette = {

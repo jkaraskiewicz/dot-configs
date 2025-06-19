@@ -1,5 +1,6 @@
 return {
   'nvzone/timerly',
+  version = false,
   dependencies = {
     {
       'nvzone/volt',

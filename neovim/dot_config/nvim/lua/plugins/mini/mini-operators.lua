@@ -1,22 +1,23 @@
 return {
   'echasnovski/mini.operators',
   version = false,
+  event = 'VeryLazy',
   config = function()
     require('mini.operators').setup({
       evaluate = {
-        prefix = 'goe',
+        prefix = '',
       },
       exchange = {
-        prefix = 'gox',
+        prefix = 'mx',
       },
       multiply = {
-        prefix = 'gom',
+        prefix = 'mm',
       },
       replace = {
-        prefix = 'gor',
+        prefix = 'mr',
       },
       sort = {
-        prefix = 'gos',
+        prefix = 'ms',
       },
     })
   end,

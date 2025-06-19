@@ -1,15 +1,37 @@
 return {
   'echasnovski/mini.diff',
   version = false,
-  init = function()
+  event = 'VeryLazy',
+  config = function()
     local mini_diff = require('mini.diff')
     mini_diff.setup({
       view = {
         style = 'sign',
         signs = { add = '+', change = '~', delete = '-' },
-        priority = 1000,
+        priority = 199,
       },
       source = { mini_diff.gen_source.git(), mini_diff.gen_source.save() },
+      mappings = {
+        apply = '',
+        reset = '',
+        textobject = '',
+        goto_first = '',
+        goto_prev = '',
+        goto_next = '',
+        goto_last = '',
+      },
     })
   end,
+  keys = {
+    {
+      '<leader>mdt',
+      function() require('mini.diff').toggle() end,
+      desc = 'Toggle for current buffer',
+    },
+    {
+      '<leader>mdv',
+      function() require('mini.diff').toggle_overlay() end,
+      desc = 'Toggle overlay',
+    },
+  },
 }

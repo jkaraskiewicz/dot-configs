@@ -28,13 +28,27 @@ local function lsp_on_attach(client, bufnr)
       silent = true,
       desc = 'Document symbol',
     })
+  vim.keymap.set('n', 'grD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,
+    {
+      buffer = bufnr,
+      noremap = true,
+      silent = true,
+      desc = 'Declaration',
+    })
+  vim.keymap.set('n', 'grt', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end,
+    {
+      buffer = bufnr,
+      noremap = true,
+      silent = true,
+      desc = 'Type definition',
+    })
 
   -- Formatting keymap (defaults to non-LSP version)
   if not vim.tbl_isempty(vim.lsp.get_clients()) then
-    vim.keymap.set('n', '<leader>rf', function() vim.lsp.buf.format() end,
+    vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end,
       { desc = 'Format buffer' })
   else
-    vim.keymap.set('n', '<leader>rf', 'gg=G<C-o>', { desc = 'Format buffer' })
+    vim.keymap.set('n', 'grf', 'gg=G<C-o>', { desc = 'Format buffer' })
   end
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
@@ -59,13 +73,10 @@ local function lsp_on_detach(client, bufnr)
   pcall(vim.keymap.del, 'n', 'grs')
 end
 
--- Create the Autocommand to call the on_attach function
+-- LSP attach/detach autocommands
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('attach_lsp', {}),
-  -- Use the function defined above as the callback
   callback = function(ev)
-    -- You could add logic here to check ev.data.client_id if needed
-    -- or just call the general on_attach for all servers
     lsp_on_attach(vim.lsp.get_client_by_id(ev.data.client_id), ev.buf)
   end,
 })
@@ -94,6 +105,7 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   end,
 })
 
+-- Don't highlight words in neotree buffers
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'Neo-Tree',
   callback = function()

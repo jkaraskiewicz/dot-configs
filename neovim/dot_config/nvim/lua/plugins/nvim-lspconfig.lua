@@ -1,13 +1,9 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    version = false,
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        config = function()
-          require('mason').setup()
-        end,
-      },
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
@@ -15,6 +11,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
+    version = false,
     config = function()
       require('mason-lspconfig').setup({
         ensure_installed = {

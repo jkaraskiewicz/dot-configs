@@ -1,5 +1,7 @@
 return {
   'backdround/neowords.nvim',
+  version = false,
+  event = "VeryLazy",
   init = function()
     local neowords = require('neowords')
     local p = neowords.pattern_presets
