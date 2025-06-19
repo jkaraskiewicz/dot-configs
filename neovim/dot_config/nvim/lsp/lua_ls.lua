@@ -10,6 +10,9 @@ return {
       hint = {
         enable = true,
       },
+      diagnostics = {
+        globals = { 'vim' },
+      },
       format = {
         enable = true,
         defaultConfig = {

@@ -7,7 +7,7 @@ return {
   },
   cmd = { 'TimerlyToggle' },
   keys = {
-    { '<leader>mT', ':TimerlyToggle<cr>', desc = 'Toggle timerly' },
+    { '<leader>mT', ':TimerlyToggle<cr>', desc = 'Timerly' },
   },
   opts = {
     position = 'bottom-right',

@@ -2,7 +2,7 @@ return {
   'AndrewRadev/switch.vim',
   cmd = 'Switch',
   keys = {
-    { 'gs', ':Switch<cr>', desc = 'Switch/cycle' },
+    { 'gs', ':Switch<cr>', desc = 'Switch or cycle' },
   },
   init = function()
     vim.cmd([[

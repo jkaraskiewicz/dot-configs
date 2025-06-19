@@ -34,6 +34,8 @@ return {
         { mode = 'n', keys = '<leader>e',  desc = '+Explorer' },
         { mode = 'n', keys = '<leader>f',  desc = '+Find' },
         { mode = 'x', keys = '<leader>f',  desc = '+Find' },
+        { mode = 'n', keys = '<leader>fo', desc = '+Other' },
+        { mode = 'x', keys = '<leader>fo', desc = '+Other' },
         { mode = 'n', keys = '<leader>m',  desc = '+Misc' },
         { mode = 'n', keys = '<leader>r',  desc = '+Refactor' },
         { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },

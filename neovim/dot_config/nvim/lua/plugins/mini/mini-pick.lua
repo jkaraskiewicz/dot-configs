@@ -2,9 +2,16 @@ return {
   'echasnovski/mini.pick',
   version = false,
   keys = {
-    { '<leader>ff', ':Pick files<CR>',     desc = 'Find files' },
-    { '<leader>fg', ':Pick grep_live<CR>', desc = 'Find text (live grep)' },
-    { '<leader>fb', ':Pick buffers<CR>',   desc = 'Find buffers' },
+    { '<leader>ff', ':Pick files<CR>',     desc = 'Files' },
+    { '<leader>fg', ':Pick grep_live<CR>', desc = 'Text (live grep)' },
+    { '<leader>fb', ':Pick buffers<CR>',   desc = 'Buffers' },
+    {
+      '<leader>fl',
+      function()
+        require('mini.pick').builtin.resume()
+      end,
+      desc = 'Last picker',
+    },
   },
   init = function()
     local win_config = function()
@@ -21,7 +28,7 @@ return {
 
     require('mini.pick').setup({
       window = {
-        config = win_config
+        config = win_config,
       },
     })
 

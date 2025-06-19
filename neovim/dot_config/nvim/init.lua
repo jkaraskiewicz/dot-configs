@@ -6,7 +6,6 @@ require('config.disabled-keymaps')
 require('config.autocmds')
 require('config.keymaps')
 require('config.options')
-require('config.diagnostic')
 require('config.lazy')
 
 -- mini.completion vs nvim-cmp

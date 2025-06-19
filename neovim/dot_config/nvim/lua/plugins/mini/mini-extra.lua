@@ -3,9 +3,9 @@ return {
   version = false,
   keys = {
     {
-      '<leader>ft',
+      '<leader>fot',
       function() require('mini.extra').pickers.treesitter() end,
-      desc = 'Find in treesitter nodes',
+      desc = 'Treesitter nodes',
     },
     {
       '<leader>fv',
@@ -14,37 +14,37 @@ return {
           recency_weight = 1,
         })
       end,
-      desc = 'Find in recent',
+      desc = 'Recent files',
     },
     {
-      '<leader>fr',
+      '<leader>for',
       function() require('mini.extra').pickers.registers() end,
-      desc = 'Find in registers',
+      desc = 'Registers',
     },
     {
-      '<leader>fk',
+      '<leader>fok',
       function() require('mini.extra').pickers.keymaps() end,
-      desc = 'Find in keymaps',
+      desc = 'Keymaps',
     },
     {
       '<leader>fh',
       function() require('mini.extra').pickers.history() end,
-      desc = 'Find in history',
+      desc = 'Command history',
+    },
+    {
+      '<leader>foc',
+      function() require('mini.extra').pickers.commands() end,
+      desc = 'Commands',
+    },
+    {
+      '<leader>foo',
+      function() require('mini.extra').pickers.options() end,
+      desc = 'Options',
     },
     {
       '<leader>fc',
-      function() require('mini.extra').pickers.commands() end,
-      desc = 'Find in commands',
-    },
-    {
-      '<leader>fo',
-      function() require('mini.extra').pickers.options() end,
-      desc = 'Find in neovim options',
-    },
-    {
-      '<leader>fl',
       function() require('mini.extra').pickers.buf_lines({ scope = 'current' }) end,
-      desc = 'Find in current buffer',
+      desc = 'Current buffer content',
     },
   },
   config = function()

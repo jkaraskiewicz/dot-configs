@@ -4,6 +4,6 @@ return {
   cmd = { 'ToggleTerm', 'TermExec', 'TermNew', 'TermSelect' },
   config = true,
   keys = {
-    { '<leader>mt', ':ToggleTerm<cr>', desc = 'Toggle terminal' },
+    { '<leader>mt', ':ToggleTerm<cr>', desc = 'Terminal' },
   },
 }

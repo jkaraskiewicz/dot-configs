@@ -10,7 +10,7 @@ return {
         vim.cmd [[Neotree close]]
         require('mini.starter').open()
       end,
-      { noremap = true, silent = true, desc = 'Open starter screen' }
+      { noremap = true, silent = true, desc = 'Starter screen' }
     )
   end,
 }
