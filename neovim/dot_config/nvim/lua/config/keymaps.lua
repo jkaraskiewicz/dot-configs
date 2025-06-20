@@ -31,7 +31,7 @@ map('n', 'gf', 'dlph', { desc = 'Swap letters' })
 -- Refactor
 map(
   'n',
-  'grR',
+  '<leader>rR',
   function()
     vim.lsp.buf.rename()
   end,
@@ -39,7 +39,7 @@ map(
 )
 map(
   { 'n', 'x' },
-  'gra',
+  '<leader>ra',
   function()
     vim.lsp.buf.code_action()
   end,
@@ -47,7 +47,7 @@ map(
 )
 map(
   'n',
-  'gre',
+  '<leader>re',
   function()
     require('mini.extra').pickers.diagnostic({ scope = 'current' })
   end,
@@ -55,7 +55,7 @@ map(
 )
 map(
   'n',
-  'grq',
+  '<leader>rq',
   function()
     require('mini.extra').pickers.list({ scope = 'quickfix' })
   end,
@@ -63,7 +63,7 @@ map(
 )
 map(
   'n',
-  'grf',
+  '<leader>rf',
   function()
     vim.lsp.buf.format()
   end,
@@ -71,7 +71,7 @@ map(
 )
 map(
   'n',
-  'grgq',
+  '<leader>rgq',
   function()
     vim.diagnostic.setqflist({ open = true })
   end,

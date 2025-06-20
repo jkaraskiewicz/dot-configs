@@ -1,41 +1,41 @@
 local function lsp_on_attach(client, bufnr)
   -- Setup keymaps and other buffer-local settings
-  vim.keymap.set('n', 'grd', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,
+  vim.keymap.set('n', '<leader>rd', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Definition',
     })
-  vim.keymap.set('n', 'grr', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,
+  vim.keymap.set('n', '<leader>rr', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'References',
     })
-  vim.keymap.set('n', 'gri', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,
+  vim.keymap.set('n', '<leader>ri', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Implementation',
     })
-  vim.keymap.set('n', 'grs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
+  vim.keymap.set('n', '<leader>rs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Document symbol',
     })
-  vim.keymap.set('n', 'grD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,
+  vim.keymap.set('n', '<leader>rD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,
     {
       buffer = bufnr,
       noremap = true,
       silent = true,
       desc = 'Declaration',
     })
-  vim.keymap.set('n', 'grt', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end,
+  vim.keymap.set('n', '<leader>rt', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end,
     {
       buffer = bufnr,
       noremap = true,
@@ -45,10 +45,10 @@ local function lsp_on_attach(client, bufnr)
 
   -- Formatting keymap (defaults to non-LSP version)
   if not vim.tbl_isempty(vim.lsp.get_clients()) then
-    vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end,
+    vim.keymap.set('n', '<leader>rf', function() vim.lsp.buf.format() end,
       { desc = 'Format buffer' })
   else
-    vim.keymap.set('n', 'grf', 'gg=G<C-o>', { desc = 'Format buffer' })
+    vim.keymap.set('n', '<leader>rf', 'gg=G<C-o>', { desc = 'Format buffer' })
   end
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
@@ -67,10 +67,10 @@ local function lsp_on_attach(client, bufnr)
 end
 
 local function lsp_on_detach(client, bufnr)
-  pcall(vim.keymap.del, 'n', 'grd')
-  pcall(vim.keymap.del, 'n', 'grr')
-  pcall(vim.keymap.del, 'n', 'gri')
-  pcall(vim.keymap.del, 'n', 'grs')
+  pcall(vim.keymap.del, 'n', '<leader>rd')
+  pcall(vim.keymap.del, 'n', '<leader>rr')
+  pcall(vim.keymap.del, 'n', '<leader>ri')
+  pcall(vim.keymap.del, 'n', '<leader>rs')
 end
 
 -- LSP attach/detach autocommands
