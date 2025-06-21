@@ -25,6 +25,9 @@ return {
         -- `[`, `]`
         { mode = 'n', keys = '[' },
         { mode = 'n', keys = ']' },
+        -- `{`, `}`
+        { mode = 'n', keys = '{' },
+        { mode = 'n', keys = '}' },
       },
       clues = {
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },

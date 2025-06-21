@@ -9,6 +9,15 @@ function M.map(tbl, f)
   return t
 end
 
+-- Return an array containing first n elements of the input array
+function M.first_n(arr, n)
+  local newArray = {}
+  for i = 1, math.min(n, #arr) do
+    newArray[i] = arr[i]
+  end
+  return newArray
+end
+
 -- Find the name of the current function/method (based on the cursor position)
 -- Courtesy of Gemini
 function M.get_current_function_name()

@@ -19,11 +19,13 @@ return {
       p.hex_color
     )
 
+    -- Override w, e, b to use small words (_ and - used as delimiters)
     vim.keymap.set({ 'n', 'x', 'o' }, 'w', subword_hops.forward_start)
     vim.keymap.set({ 'n', 'x', 'o' }, 'e', subword_hops.forward_end)
     vim.keymap.set({ 'n', 'x', 'o' }, 'b', subword_hops.backward_start)
     -- vim.keymap.set({ 'n', 'x', 'o' }, 'ge', subword_hops.backward_end)
 
+    -- W, E, B are for big words (_ and - are not delimiters)
     vim.keymap.set({ 'n', 'x', 'o' }, 'W', bigword_hops.forward_start)
     vim.keymap.set({ 'n', 'x', 'o' }, 'E', bigword_hops.forward_end)
     vim.keymap.set({ 'n', 'x', 'o' }, 'B', bigword_hops.backward_start)

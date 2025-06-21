@@ -10,10 +10,12 @@ return {
     {
       '<leader>fv',
       function()
-        local width = math.floor(0.618 * vim.o.columns)
-        local height = 5
         require('mini.extra').pickers.visit_paths({
-          recency_weight = 1,
+          sort = function(path_data_arr)
+            local fn = require('mini.visits').gen_sort.default({ recency_weight = 1 })
+            local results = fn(path_data_arr)
+            return require('utils.utils').first_n(results, 5)
+          end,
         })
       end,
       desc = 'Recent files',
