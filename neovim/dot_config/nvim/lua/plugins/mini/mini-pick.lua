@@ -49,7 +49,7 @@ return {
       })
     end
 
-    local lib = require('lib')
+    local utils = require('utils.utils')
 
     local function on_language_choice(data)
       vim.api.nvim_buf_call(
@@ -68,7 +68,7 @@ return {
           source = {
             items = languages,
             show = function(buf_id, items, query)
-              MiniPick.default_show(buf_id, lib.map(items, function(item) return item.display end), query)
+              MiniPick.default_show(buf_id, utils.map(items, function(item) return item.display end), query)
             end,
             name = 'Buffer language',
             choose = on_language_choice,
