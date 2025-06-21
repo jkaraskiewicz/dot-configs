@@ -29,51 +29,10 @@ map('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 map('n', 'gf', 'dlph', { desc = 'Swap letters' })
 
 -- Refactor
-map(
-  'n',
-  '<leader>rR',
-  function()
-    vim.lsp.buf.rename()
-  end,
-  { desc = 'Rename' }
-)
-map(
-  { 'n', 'x' },
-  '<leader>ra',
-  function()
-    vim.lsp.buf.code_action()
-  end,
-  { desc = 'Code actions' }
-)
-map(
-  'n',
-  '<leader>re',
-  function()
-    require('mini.extra').pickers.diagnostic({ scope = 'current' })
-  end,
-  { desc = 'Diagnostics' }
-)
-map(
-  'n',
-  '<leader>rq',
-  function()
-    require('mini.extra').pickers.list({ scope = 'quickfix' })
-  end,
-  { desc = 'Quickfixes' }
-)
-map(
-  'n',
-  '<leader>rf',
-  function()
-    vim.lsp.buf.format()
-  end,
-  { desc = 'Format buffer' }
-)
-map(
-  'n',
-  '<leader>rgq',
-  function()
-    vim.diagnostic.setqflist({ open = true })
-  end,
-  { desc = 'Quickfixes' }
-)
+map('n', '<leader>rR', function() vim.lsp.buf.rename() end, { desc = 'Rename' })
+map({ 'n', 'x' }, '<leader>ra', function() vim.lsp.buf.code_action() end, { desc = 'Code actions' })
+map('n', '<leader>re', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,
+  { desc = 'Diagnostics' })
+map('n', '<leader>rq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end, { desc = 'Quickfixes' })
+map('n', '<leader>rf', function() vim.lsp.buf.format() end, { desc = 'Format buffer' })
+map('n', '<leader>rgq', function() vim.diagnostic.setqflist({ open = true }) end, { desc = 'Quickfixes' })

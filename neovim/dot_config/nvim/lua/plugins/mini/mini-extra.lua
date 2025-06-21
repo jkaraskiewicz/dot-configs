@@ -10,6 +10,8 @@ return {
     {
       '<leader>fv',
       function()
+        local width = math.floor(0.618 * vim.o.columns)
+        local height = 5
         require('mini.extra').pickers.visit_paths({
           recency_weight = 1,
         })
@@ -50,11 +52,6 @@ return {
       '<leader>foo',
       function() require('mini.extra').pickers.options() end,
       desc = 'Options',
-    },
-    {
-      '<leader>fc',
-      function() require('mini.extra').pickers.buf_lines({ scope = 'current' }) end,
-      desc = 'Current buffer content',
     },
   },
   config = function()
