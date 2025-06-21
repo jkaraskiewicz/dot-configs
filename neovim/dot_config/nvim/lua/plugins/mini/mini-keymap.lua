@@ -3,9 +3,10 @@ return {
   version = false,
   event = 'VeryLazy',
   config = function()
-    require('mini.keymap').setup()
+    local mini_keymap = require('mini.keymap')
+    mini_keymap.setup()
 
-    local map_multistep = require('mini.keymap').map_multistep
+    local map_multistep = mini_keymap.map_multistep
     map_multistep('i', '<Tab>', { 'pmenu_accept' })
   end,
 }

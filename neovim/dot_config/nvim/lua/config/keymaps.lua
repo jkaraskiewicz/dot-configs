@@ -36,3 +36,17 @@ map('n', '<leader>re', function() require('mini.extra').pickers.diagnostic({ sco
 map('n', '<leader>rq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end, { desc = 'Quickfixes' })
 map('n', '<leader>rf', function() vim.lsp.buf.format() end, { desc = 'Format buffer' })
 map('n', '<leader>rgq', function() vim.diagnostic.setqflist({ open = true }) end, { desc = 'Quickfixes' })
+
+-- Redirect gr to <leader>r
+map(
+  { 'n', 'x' },
+  'gr',
+  function()
+    vim.schedule(
+      function()
+        vim.api.nvim_feedkeys(vim.g.mapleader .. 'r', 't', false)
+      end
+    )
+  end,
+  { noremap = true, silent = true, desc = '+Refactor' }
+)

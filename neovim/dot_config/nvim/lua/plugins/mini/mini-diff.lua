@@ -24,12 +24,12 @@ return {
   end,
   keys = {
     {
-      '<leader>mdt',
+      'gdt',
       function() require('mini.diff').toggle() end,
       desc = 'Toggle for current buffer',
     },
     {
-      '<leader>mdv',
+      'gdv',
       function() require('mini.diff').toggle_overlay() end,
       desc = 'Toggle overlay',
     },

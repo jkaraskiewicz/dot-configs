@@ -1,5 +1,7 @@
 -- Disable some LSP keybinds by default (they will be enabled in LspOnAttach)
 pcall(vim.keymap.del, 'n', 'gO')
+-- pcall(vim.keymap.del, 'n', 'gr')
+-- pcall(vim.keymap.del, 'x', 'gr')
 pcall(vim.keymap.del, 'n', 'gra')
 pcall(vim.keymap.del, 'x', 'gra')
 pcall(vim.keymap.del, 'n', 'grn')

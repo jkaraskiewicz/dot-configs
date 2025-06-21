@@ -93,4 +93,36 @@ function M.get_current_function_name()
   return ''
 end
 
+local function split_lines(str)
+  local lines = {}
+  for line in str:gmatch('([^\n]*)\n?') do
+    if line ~= '' or str:sub(-1) == '\n' then
+      table.insert(lines, line)
+    end
+  end
+  if #lines > 0 and str:sub(-1) == '\n' and lines[#lines] == '' then
+    table.remove(lines)
+  end
+  return lines
+end
+
+-- Create a new buffer with predefined text (in a new window)
+function M.open_buffer_with_content(content, filetype)
+  local prev_bufnr = vim.fn.bufnr('config-help')
+  if prev_bufnr ~= -1 then
+    vim.cmd(string.format('%s %d', 'bwipeout!', prev_bufnr))
+  end
+
+  local bufnr = vim.api.nvim_create_buf(true, false)
+  vim.api.nvim_buf_set_name(bufnr, 'config-help')
+  vim.cmd('split')
+  vim.api.nvim_set_current_buf(bufnr)
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, split_lines(content))
+  if filetype ~= nil then
+    vim.api.nvim_buf_set_option(bufnr, 'filetype', filetype)
+  end
+  vim.api.nvim_buf_set_option(bufnr, 'buftype', 'nofile')
+  vim.cmd('normal! gg')
+end
+
 return M
