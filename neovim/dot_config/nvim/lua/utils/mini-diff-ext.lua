@@ -1,8 +1,9 @@
 local M = {}
 
 M.hg_cache = {}
+M.jj_cache = {}
 
--- Helper functions
+-- Common
 local function get_buf_realpath(buf_id)
   return vim.loop.fs_realpath(vim.api.nvim_buf_get_name(buf_id)) or ''
 end
@@ -25,6 +26,8 @@ local function read_stream(stream, feed)
   end
   stream:read_start(callback)
 end
+
+-- Hg
 
 local hg_set_ref_text = vim.schedule_wrap(function(buf_id)
   local diff = require('mini.diff')
@@ -103,6 +106,47 @@ local function hg_start_watching_dirstate(buf_id, path)
   read_stream(stdout, stdout_feed)
 end
 
+-- Jujutsu
+
+local function jj_get_repository_dir(path)
+  local result = vim.system({ 'jj', '--ignore-working-copy', 'root' }, { cwd = vim.fs.dirname(path) }):wait()
+  if result.code == 0 then
+    return vim.trim(result.stdout)
+  else
+    return nil
+  end
+end
+
+local function jj_start_watching_dirstate(buf_id, path)
+  local repository = jj_get_repository_dir(path)
+  if repository == nil then return false end
+  local watchfile = vim.fs.joinpath(repo, '.jj/working_copy')
+
+  local buf_fs_event, timer = vim.loop.new_fs_event(), vim.loop.new_timer()
+  local set_ref_text = function()
+    vim.system(
+      { 'jj', '--ignore-working-copy', 'file', 'show', '-r', '@-', '\"' .. path .. '\"' },
+      { cwd = vim.fs.dirname(path), text = true },
+      vim.schedule_wrap(function(res)
+        local MiniDiff = require('mini.diff')
+        MiniDiff.set_ref_text(buf_id, res.stdout)
+      end)
+    )
+  end
+
+  local watch_index = function(_, filename, _)
+    if filename ~= 'checkout' then return end
+    timer:stop()
+    timer:start(50, 0, set_ref_text)
+  end
+  buf_fs_event:start(watchfile, { recursive = true }, watch_index)
+
+  invalidate_cache(buf_id)
+  cache[buf_id] = { fs_event = buf_fs_event, timer = timer }
+
+  set_ref_text()
+end
+
 function M.setup()
   local diff = require('mini.diff')
 
@@ -123,6 +167,23 @@ function M.setup()
     end
 
     return { name = 'mercurial', attach = attach, detach = detach }
+  end
+
+  diff.gen_source.jj = function()
+    local attach = function(buf_id)
+      if M.jj_cache[buf_id] ~= nil then return false end
+
+      local path = get_buf_realpath(buf_id)
+      if path == '' then return false end
+
+      return jj_start_watching_dirstate(buf_id, path)
+    end
+
+    local detach = function(buf_id)
+      invalidate_cache(M.jj_cache, buf_id)
+    end
+
+    return { name = 'jj', attach = attach, detach = detach }
   end
 end
 
