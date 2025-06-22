@@ -17,14 +17,9 @@ return {
         -- Chain of non-whitespace characters
         s = { '%s()[^%s]+()%s' },
         -- Entire buffer content
-        g = function()
-          local from = { line = 1, col = 1 }
-          local to = {
-            line = vim.fn.line('$'),
-            col = math.max(vim.fn.getline('$'):len(), 1),
-          }
-          return { from = from, to = to }
-        end,
+        B = require('mini.extra').gen_ai_spec.buffer(),
+        -- Current indented block
+        I = require('mini.extra').gen_ai_spec.indent(),
       },
       mappings = {
         goto_left = '',
