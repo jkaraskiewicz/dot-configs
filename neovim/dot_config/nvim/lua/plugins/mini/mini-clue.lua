@@ -34,9 +34,10 @@ return {
         { mode = 'x', keys = '"' },
       },
       clues = {
-        { mode = 'n', keys = 'gd', desc = '+Diff' },
+        { mode = 'n', keys = 'gd',         desc = '+Diff' },
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
         { mode = 'n', keys = '<leader>B',  desc = '+Bookmarks' },
+        { mode = 'n', keys = '<leader>d',  desc = '+Diff' },
         { mode = 'n', keys = '<leader>e',  desc = '+Explorer' },
         { mode = 'n', keys = '<leader>f',  desc = '+Find' },
         { mode = 'n', keys = '<leader>fo', desc = '+Other' },
