@@ -1,5 +1,8 @@
 return {
   'echasnovski/mini.clue',
+  dependencies = {
+    'jkaraskiewicz/toggle.nvim',
+  },
   version = false,
   event = 'VeryLazy',
   config = function()
@@ -48,6 +51,9 @@ return {
         { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>s',  desc = '+Search' },
         { mode = 'x', keys = '<leader>s',  desc = '+Search' },
+        { mode = 'n', keys = '<leader>t',  desc = '+Toggles' },
+
+        require('toggle').clues(),
 
         require('mini.clue').gen_clues.builtin_completion(),
         require('mini.clue').gen_clues.registers(),
