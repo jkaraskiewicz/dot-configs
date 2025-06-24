@@ -27,6 +27,7 @@ map('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
 -- Better movement / editing
 map('n', 'gf', 'dlph', { desc = 'Swap letters' })
+map('n', 'gv', 'gv', { noremap = true, desc = 'Last visual selection' })
 
 -- Refactor
 map('n', '<leader>rR', function() vim.lsp.buf.rename() end, { desc = 'Rename' })
