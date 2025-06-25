@@ -15,6 +15,7 @@ return {
       desc = 'Toggle diffview',
     },
   },
+  cmd = 'DiffviewOpen',
   config = function()
     require('diffview').setup({
       keymaps = {

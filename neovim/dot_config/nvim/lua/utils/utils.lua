@@ -18,6 +18,26 @@ function M.first_n(arr, n)
   return newArray
 end
 
+function M.stringify(arg)
+  if type(arg) == 'number' then
+    return tostring(arg)
+  elseif type(arg) == 'string' then
+    return "'" .. arg .. "'"
+  elseif type(arg) == 'boolean' then
+    return tostring(arg)
+  elseif type(arg) == 'nil' then
+    return 'nil'
+  elseif type(arg) == 'table' then
+    local result = '['
+    for k, v in pairs(arg) do
+      result = result .. '{' .. M.stringify(k) .. ': ' .. M.stringify(v) .. '}, '
+    end
+    result = result .. ']'
+    return result
+  else
+  end
+end
+
 -- Find the name of the current function/method (based on the cursor position)
 -- Courtesy of Gemini
 function M.get_current_function_name()

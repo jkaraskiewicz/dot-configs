@@ -13,6 +13,13 @@ return {
       end,
       desc = 'Last picker',
     },
+    {
+      '<leader>fs',
+      function()
+        require('utils.mini-pick-ext').vcs_commits()
+      end,
+      desc = 'VCS commits',
+    },
   },
   init = function()
     -- Center the window
