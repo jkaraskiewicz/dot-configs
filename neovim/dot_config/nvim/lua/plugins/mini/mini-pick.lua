@@ -14,7 +14,7 @@ return {
       desc = 'Last picker',
     },
     {
-      '<leader>fs',
+      '<leader>fV',
       function()
         require('utils.mini-pick-ext').vcs_commits()
       end,

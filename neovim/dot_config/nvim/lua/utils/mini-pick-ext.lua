@@ -27,7 +27,7 @@ M.vcs_commits = function(local_opts, opts)
       '--pretty=format:%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %Creset' }
     repo_dir = H.get_git_repository()
   elseif vcs_tool == 'hg' then
-    command = { 'hg', 'log', '--template', '\'{onelinesummary}\n\'' }
+    command = { 'zsh', '-c', '"\"hg tree --reverse --compact\""' }
     repo_dir = H.get_hg_repository()
   else
     error('VCS type not supported')
@@ -49,8 +49,7 @@ M.vcs_commits = function(local_opts, opts)
   end
 
   local choose_marked = function(items_marked)
-    local len = table.getn(items_marked)
-    if len < 1 or len > 2 then return {} end
+    if #items_marked < 1 or #items_marked > 2 then return {} end
 
     local first_rev = H.extract_rev(vcs_tool, items_marked[1])
     local second_rev = H.extract_rev(vcs_tool, items_marked[2])
@@ -68,7 +67,26 @@ M.vcs_commits = function(local_opts, opts)
   }
 
   opts = vim.tbl_deep_extend('force', { source = default_source }, opts or {})
-  return mini_pick.builtin.cli({ command = command }, opts)
+  return mini_pick.builtin.cli(
+    {
+      command = command,
+      postprocess = function(items)
+        local result = {}
+        local current = ''
+        for _, item in ipairs(items) do
+          if string.find(item, '^[^%w]*[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]%s') then
+            if current ~= '' then table.insert(result, current) end
+            current = item
+          else
+            current = current .. string.gsub(item, '[^%w]*(.+)', ' %1')
+          end
+        end
+        if current ~= '' then table.insert(result, current) end
+        return result
+      end,
+    },
+    opts
+  )
 end
 
 H.open_diffview = vim.schedule_wrap(function(first_rev, second_rev)
