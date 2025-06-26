@@ -2,10 +2,10 @@ return {
   'echasnovski/mini.pick',
   version = false,
   keys = {
-    { '<leader>ff', ':Pick files<CR>',     desc = 'Files' },
-    { '<leader>fg', ':Pick grep_live<CR>', desc = 'Text (live grep)' },
-    { '<leader>fb', ':Pick buffers<CR>',   desc = 'Buffers' },
-    { '<leader>fl', ':Pick buffer_lines_current<CR>',   desc = 'Lines' },
+    { '<leader>ff', ':Pick files<CR>',                desc = 'Files' },
+    { '<leader>fg', ':Pick grep_live<CR>',            desc = 'Text (live grep)' },
+    { '<leader>fb', ':Pick buffers<CR>',              desc = 'Buffers' },
+    { '<leader>fl', ':Pick buffer_lines_current<CR>', desc = 'Lines' },
     {
       '<leader>fr',
       function()
@@ -16,7 +16,7 @@ return {
     {
       '<leader>fV',
       function()
-        require('utils.mini-pick-ext').vcs_commits()
+        require('utils.mini-pick-ext').vcs_commits({ vcs = { 'git', 'hg' } })
       end,
       desc = 'VCS commits',
     },
