@@ -1,8 +1,6 @@
 local map = vim.keymap.set
 
 -- Buffers
-map('n', '<leader>bd', '<cmd>bd<cr>', { desc = 'Close buffer' })
-map('n', '<leader>bq', '<cmd>%bd|e#<cr>', { desc = 'Close other buffers' })
 map('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next buffer' })
 map('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Previous buffer' })
 map('n', '<TAB>', '<C-^>', { desc = 'Alternate buffers' })
