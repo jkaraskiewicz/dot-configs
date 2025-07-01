@@ -55,18 +55,6 @@ local vcs_configs = {
   },
 }
 
-M.window_config = function(rows)
-  local height = rows or math.floor(0.618 * vim.o.lines)
-  local width = math.floor(0.618 * vim.o.columns)
-  return {
-    anchor = 'NW',
-    height = height,
-    width = width,
-    row = math.floor(0.5 * (vim.o.lines - height)),
-    col = math.floor(0.5 * (vim.o.columns - width)),
-  }
-end
-
 M.vcs_commits = function(local_opts, opts)
   local mini_pick = H.mini_pick()
   local_opts = local_opts or {}
