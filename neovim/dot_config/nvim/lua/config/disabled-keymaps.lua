@@ -9,6 +9,7 @@ pcall(vim.keymap.del, 'n', 'grd')
 pcall(vim.keymap.del, 'n', 'grr')
 pcall(vim.keymap.del, 'n', 'gri')
 pcall(vim.keymap.del, 'n', 'grs')
+pcall(vim.keymap.del, 'n', 'grt')
 pcall(vim.keymap.del, 'n', 'gx')
 pcall(vim.keymap.del, 'x', 'gx')
 
