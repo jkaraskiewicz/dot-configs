@@ -64,6 +64,22 @@ local function lsp_on_attach(client, bufnr)
   if client.server_capabilities.inlayHintProvider then
     vim.lsp.inlay_hint.enable(true)
   end
+
+  vim.diagnostic.config({
+    virtual_text = {
+      enabled = false,
+      set_category = 'end_of_line',
+      prefix = ' ',               -- Add a space before the diagnostic message
+    },
+    signs = true,             -- Show signs in the sign column
+    underline = true,         -- Underline problematic text
+    update_in_insert = false, -- Don't update diagnostics in insert mode (can be distracting)
+    severity_sort = true,     -- Sort diagnostics by severity
+    float = {                 -- Configuration for the floating diagnostic window
+      border = 'rounded',
+      source = 'if_many',     -- Shows source if there are multiple diagnostics for the line
+    },
+  })
 end
 
 local function lsp_on_detach(client, bufnr)
