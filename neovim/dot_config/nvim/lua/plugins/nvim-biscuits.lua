@@ -1,6 +1,6 @@
 return {
   'code-biscuits/nvim-biscuits',
-  event = "VeryLazy",
+  event = 'VeryLazy',
   dependencies = {
     {
       'nvim-treesitter/nvim-treesitter',
@@ -13,6 +13,7 @@ return {
         prefix_string = ' ⤌ ',
         cursor_line_only = true,
       },
+      max_file_size = '15kb',
     })
 
     vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
