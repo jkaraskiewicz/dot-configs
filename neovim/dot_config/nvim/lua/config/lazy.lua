@@ -37,4 +37,6 @@ require('lazy').setup({
 })
 
 -- Experimental messages UI
-require('vim._extui').enable({})
+if not vim.g.neovide then
+  require('vim._extui').enable({})
+end
