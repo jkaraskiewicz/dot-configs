@@ -8,5 +8,6 @@ return {
     damping = 0.67,
     matrix_pixel_treshold = 0.5,
     smear_to_cmd = false,
+    smear_insert_mode = false,
   },
 }
