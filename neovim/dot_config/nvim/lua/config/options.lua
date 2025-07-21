@@ -66,3 +66,19 @@ end
 -- ## Fix the issue with treesitter syntax highlighting flickering ##
 -- (https://github.com/neovim/neovim/issues/32660)
 vim.g._ts_force_sync_parsing = true
+
+-- Neovide
+vim.g.neovide_cursor_trail_size = 0.25
+vim.g.neovide_cursor_animate_command_line = false
+vim.g.neovide_cursor_vfx_mode = { '', '' }
+
+vim.g.neovide_scale_factor = 1.0
+local change_scale_factor = function(delta)
+  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+vim.keymap.set('n', '<C-=>', function()
+  change_scale_factor(1.1)
+end)
+vim.keymap.set('n', '<C-->', function()
+  change_scale_factor(1 / 1.1)
+end)
