@@ -37,9 +37,11 @@ return {
       },
     })
 
-    vim.opt.pumblend = 10
-    vim.opt.pumheight = 25
-    vim.opt.pummaxwidth = 80
+    if not vim.g.neovide then
+      vim.opt.pumblend = 10
+      vim.opt.pumheight = 25
+      vim.opt.pummaxwidth = 80
+    end
 
     -- vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
   end,
