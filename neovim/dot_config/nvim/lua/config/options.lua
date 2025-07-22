@@ -78,6 +78,8 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_cursor_animation_length = 0.05
 
+  vim.g.neovide_detach_on_quit = 'always_detach'
+
   vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
