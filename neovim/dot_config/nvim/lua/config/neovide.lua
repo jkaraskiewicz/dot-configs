@@ -1,6 +1,3 @@
--- Font family and size
-vim.opt.guifont = { 'CommitMono Nerd Font Mono', ':h16' }
-
 -- Animations
 vim.g.neovide_cursor_trail_size = 0.0
 vim.g.neovide_cursor_animate_command_line = false
