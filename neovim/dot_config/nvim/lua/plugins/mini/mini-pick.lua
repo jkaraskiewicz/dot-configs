@@ -3,22 +3,38 @@ return {
   version = false,
   keys = {
     { '<leader>ff', ':Pick files<CR>',                desc = 'Files' },
-    { '<leader>fg', ':Pick grep_live<CR>',            desc = 'Text (live grep)' },
-    { '<leader>fb', ':Pick buffers<CR>',              desc = 'Buffers' },
+    { '<leader>fg', ':Pick grep_live<CR>',            desc = 'Live grep' },
     { '<leader>fl', ':Pick buffer_lines_current<CR>', desc = 'Lines' },
     {
       '<leader>fr',
       function()
         require('mini.pick').builtin.resume()
       end,
-      desc = 'Last picker',
+      desc = 'Resume picker',
     },
     {
-      '<leader>fV',
+      '<leader>fv',
       function()
-        require('utils.mini-pick-ext').vcs_commits({ vcs = { 'git', 'hg' } })
+        require('mini.extra').pickers.visit_paths({
+          sort = function(path_data_arr)
+            local fn = require('mini.visits').gen_sort.default({ recency_weight = 1 })
+            local results = fn(path_data_arr)
+            return require('utils.utils').first_n(results, 10)
+          end,
+        })
       end,
-      desc = 'VCS commits',
+      desc = 'Recent files',
+    },
+    {
+      '<leader>sw',
+      function()
+        local word = vim.fn.expand('<cword>')
+        require('mini.pick').builtin.grep_live(nil, { source = { name = 'Grep: ' .. word } })
+        vim.schedule(function()
+          require('mini.pick').set_picker_query(word)
+        end)
+      end,
+      desc = 'Search word under cursor',
     },
   },
   init = function()

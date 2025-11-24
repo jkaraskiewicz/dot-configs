@@ -52,8 +52,11 @@ end
 opt.undodir = undodir_path
 
 -- ## Performance ##
-opt.updatetime = 100 -- Faster update time for CursorHold events (useful for plugins)
+opt.updatetime = 250 -- Update time for CursorHold events (balanced for performance)
 opt.timeoutlen = 300 -- Lower timeout for key sequences
+
+-- ## Smooth Scrolling ##
+opt.smoothscroll = true -- Enable native smooth scrolling (Neovim 0.10+)
 
 -- ## Sessions ##
 opt.sessionoptions:remove('blank') -- Don't save blank buffers (like Neo-tree)

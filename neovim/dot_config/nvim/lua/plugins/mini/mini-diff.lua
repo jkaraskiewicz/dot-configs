@@ -24,14 +24,14 @@ return {
   end,
   keys = {
     {
-      '<leader>dt',
+      '<leader>vt',
       function() require('mini.diff').toggle() end,
-      desc = 'Toggle for current buffer',
+      desc = 'Toggle diff signs',
     },
     {
-      '<leader>dv',
+      '<leader>vo',
       function() require('mini.diff').toggle_overlay() end,
-      desc = 'Toggle overlay',
+      desc = 'Toggle diff overlay',
     },
   },
 }

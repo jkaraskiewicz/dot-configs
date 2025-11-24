@@ -1,6 +1,6 @@
+-- Colorscheme picker plugin (replaces themify.nvim to fix memory leaks)
 return {
-  'lmantw/themify.nvim',
-  version = false,
+  'jkaraskiewicz/colorscheme-picker.nvim',
   lazy = false,
   priority = 1000,
   config = {
@@ -74,8 +74,10 @@ return {
     'wesleimp/min-theme.nvim',
     'xiantang/darcula-dark.nvim',
     'yorik1984/newpaper.nvim',
+
+    default = 'catppuccin',
   },
   keys = {
-    { '<leader>mc', ':Themify<cr>', desc = 'Color schemes' },
+    { '<leader>mc', ':ColorschemePickerOpen<cr>', desc = 'Color schemes' },
   },
 }

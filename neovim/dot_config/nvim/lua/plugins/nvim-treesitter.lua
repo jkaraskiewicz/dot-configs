@@ -47,29 +47,53 @@ return {
       indent = {
         enable = false,
       },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<CR>',
+          node_incremental = '<CR>',
+          scope_incremental = '<Tab>',
+          node_decremental = '<BS>',
+        },
+      },
       textobjects = {
         move = {
           enable = true,
           set_jumps = true,
           goto_next_start = {
-            [']m'] = { query = '@method.outer', desc = 'Next function' },
-            [']c'] = { query = '@call.*', desc = 'Next call' },
-            [']a'] = { query = '@parameter.inner', desc = 'Next argument' },
+            [']m'] = { query = '@function.outer', desc = 'Next function' },
+            [']c'] = { query = '@call.outer', desc = 'Next call' },
+            [']b'] = { query = '@block.outer', desc = 'Next block' },
+            [']r'] = { query = '@return.outer', desc = 'Next return' },
+            [']i'] = { query = '@impl.outer', desc = 'Next impl' },
+            [']s'] = { query = '@struct.outer', desc = 'Next struct' },
+            [']t'] = { query = '@trait.outer', desc = 'Next trait' },
           },
           goto_previous_start = {
-            ['[m'] = { query = '@method.outer', desc = 'Previous function' },
-            ['[c'] = { query = '@call.*', desc = 'Previous call' },
-            ['[a'] = { query = '@parameter.inner', desc = 'Previous argument' },
+            ['[m'] = { query = '@function.outer', desc = 'Previous function' },
+            ['[c'] = { query = '@call.outer', desc = 'Previous call' },
+            ['[b'] = { query = '@block.outer', desc = 'Previous block' },
+            ['[r'] = { query = '@return.outer', desc = 'Previous return' },
+            ['[i'] = { query = '@impl.outer', desc = 'Previous impl' },
+            ['[s'] = { query = '@struct.outer', desc = 'Previous struct' },
+            ['[t'] = { query = '@trait.outer', desc = 'Previous trait' },
           },
           goto_next_end = {
-            ['}m'] = { query = '@method.outer', desc = 'Next function' },
-            ['}c'] = { query = '@call.*', desc = 'Next call' },
-            ['}a'] = { query = '@parameter.inner', desc = 'Next argument' },
+            ['}m'] = { query = '@function.outer', desc = 'Next function end' },
+            ['}c'] = { query = '@call.outer', desc = 'Next call end' },
           },
           goto_previous_end = {
-            ['{m'] = { query = '@method.outer', desc = 'Previous function' },
-            ['{c'] = { query = '@call.*', desc = 'Previous call' },
-            ['{a'] = { query = '@parameter.inner', desc = 'Previous argument' },
+            ['{m'] = { query = '@function.outer', desc = 'Previous function end' },
+            ['{c'] = { query = '@call.outer', desc = 'Previous call end' },
+          },
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            [']a'] = { query = '@parameter.inner', desc = 'Swap argument with next' },
+          },
+          swap_previous = {
+            ['[a'] = { query = '@parameter.inner', desc = 'Swap argument with previous' },
           },
         },
       },

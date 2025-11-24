@@ -30,14 +30,9 @@ return {
   },
   keys = {
     {
-      '<leader>ee',
+      '<leader>e',
       ':Neotree toggle<cr>',
-      desc = 'Toggle Neo-tree',
-    },
-    {
-      '<leader>ec',
-      ':Neotree filesystem reveal left<cr>',
-      desc = 'Expand to current file',
+      desc = 'Toggle explorer',
     },
   },
 }

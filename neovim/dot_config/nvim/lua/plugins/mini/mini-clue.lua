@@ -1,8 +1,5 @@
 return {
   'echasnovski/mini.clue',
-  dependencies = {
-    'jkaraskiewicz/toggle.nvim',
-  },
   version = false,
   event = 'VeryLazy',
   config = function()
@@ -26,6 +23,9 @@ return {
         -- `m` key
         { mode = 'n', keys = 'm' },
         { mode = 'x', keys = 'm' },
+        -- `-` key (delete no yank)
+        { mode = 'n', keys = '-' },
+        { mode = 'x', keys = '-' },
         -- `[`, `]`
         { mode = 'n', keys = '[' },
         { mode = 'n', keys = ']' },
@@ -37,23 +37,16 @@ return {
         { mode = 'x', keys = '"' },
       },
       clues = {
-        { mode = 'n', keys = '<leader>a',  desc = '+AI' },
-        { mode = 'x', keys = '<leader>a',  desc = '+AI' },
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
-        { mode = 'n', keys = '<leader>d',  desc = '+Diff' },
+        { mode = 'n', keys = '<leader>c',  desc = '+Code' },
+        { mode = 'x', keys = '<leader>c',  desc = '+Code' },
         { mode = 'n', keys = '<leader>e',  desc = '+Explorer' },
         { mode = 'n', keys = '<leader>f',  desc = '+Find' },
-        { mode = 'n', keys = '<leader>fo', desc = '+Other' },
         { mode = 'n', keys = '<leader>m',  desc = '+Misc' },
-        { mode = 'n', keys = '<leader>r',  desc = '+Refactor' },
-        { mode = 'x', keys = '<leader>r',  desc = '+Refactor' },
-        { mode = 'n', keys = '<leader>rg', desc = '+Global' },
-        { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>s',  desc = '+Search' },
         { mode = 'x', keys = '<leader>s',  desc = '+Search' },
         { mode = 'n', keys = '<leader>t',  desc = '+Toggles' },
-
-        require('toggle').clues(),
+        { mode = 'n', keys = '<leader>v',  desc = '+VCS' },
 
         require('mini.clue').gen_clues.builtin_completion(),
         require('mini.clue').gen_clues.registers(),
