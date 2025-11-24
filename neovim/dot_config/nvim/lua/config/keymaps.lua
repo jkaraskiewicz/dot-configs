@@ -73,13 +73,4 @@ map('n', 'gy', function() vim.lsp.buf.type_definition() end, { desc = 'Go to typ
 map('n', 'gD', function() vim.lsp.buf.declaration() end, { desc = 'Go to declaration' })
 map('n', 'K', function() vim.lsp.buf.hover() end, { desc = 'Hover documentation' })
 
--- Code operations
-map('n', '<leader>cr', function() vim.lsp.buf.rename() end, { desc = 'Code rename' })
-map({ 'n', 'x' }, '<leader>ca', function() vim.lsp.buf.code_action() end, { desc = 'Code action' })
-map('n', '<leader>cd', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,
-  { desc = 'Code diagnostics' })
-map('n', '<leader>cs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
-  { desc = 'Code symbols' })
-map('n', '<leader>cq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end,
-  { desc = 'Code quickfix' })
-map('n', '<leader>cf', function() vim.lsp.buf.format() end, { desc = 'Code format' })
+-- Code operations are buffer-local and set in lua/config/autocmds.lua on LspAttach

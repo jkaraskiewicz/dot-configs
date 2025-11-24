@@ -1,55 +1,33 @@
 local function lsp_on_attach(client, bufnr)
-  -- Setup keymaps and other buffer-local settings
-  vim.keymap.set('n', '<leader>rd', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'Definition',
-    })
-  vim.keymap.set('n', '<leader>rr', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'References',
-    })
-  vim.keymap.set('n', '<leader>ri', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'Implementation',
-    })
-  vim.keymap.set('n', '<leader>rs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'Document symbol',
-    })
-  vim.keymap.set('n', '<leader>rD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'Declaration',
-    })
-  vim.keymap.set('n', '<leader>rt', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end,
-    {
-      buffer = bufnr,
-      noremap = true,
-      silent = true,
-      desc = 'Type definition',
-    })
+  local opts = { buffer = bufnr, noremap = true, silent = true }
 
-  -- Formatting keymap (defaults to non-LSP version)
-  if not vim.tbl_isempty(vim.lsp.get_clients()) then
-    vim.keymap.set('n', '<leader>rf', function() vim.lsp.buf.format() end,
-      { desc = 'Format buffer' })
-  else
-    vim.keymap.set('n', '<leader>rf', 'gg=G<C-o>', { desc = 'Format buffer' })
-  end
+  -- LSP navigation pickers
+  vim.keymap.set('n', '<leader>cg', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code go to definition' }))
+  vim.keymap.set('n', '<leader>cR', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code references' }))
+  vim.keymap.set('n', '<leader>ci', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code implementation' }))
+  vim.keymap.set('n', '<leader>cD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code declaration' }))
+  vim.keymap.set('n', '<leader>ct', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code type definition' }))
+
+  -- LSP utility pickers
+  vim.keymap.set('n', '<leader>cs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code symbols' }))
+  vim.keymap.set('n', '<leader>cd', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code diagnostics' }))
+  vim.keymap.set('n', '<leader>cq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end,
+    vim.tbl_extend('force', opts, { desc = 'Code quickfix' }))
+
+  -- LSP actions
+  vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.rename() end,
+    vim.tbl_extend('force', opts, { desc = 'Code rename' }))
+  vim.keymap.set({ 'n', 'x' }, '<leader>ca', function() vim.lsp.buf.code_action() end,
+    vim.tbl_extend('force', opts, { desc = 'Code action' }))
+  vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format() end,
+    vim.tbl_extend('force', opts, { desc = 'Code format' }))
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
 
@@ -83,10 +61,24 @@ local function lsp_on_attach(client, bufnr)
 end
 
 local function lsp_on_detach(client, bufnr)
-  pcall(vim.keymap.del, 'n', '<leader>rd')
-  pcall(vim.keymap.del, 'n', '<leader>rr')
-  pcall(vim.keymap.del, 'n', '<leader>ri')
-  pcall(vim.keymap.del, 'n', '<leader>rs')
+  local keymaps = {
+    { 'n', '<leader>cg' },
+    { 'n', '<leader>cR' },
+    { 'n', '<leader>ci' },
+    { 'n', '<leader>cD' },
+    { 'n', '<leader>ct' },
+    { 'n', '<leader>cs' },
+    { 'n', '<leader>cd' },
+    { 'n', '<leader>cq' },
+    { 'n', '<leader>cr' },
+    { 'n', '<leader>ca' },
+    { 'x', '<leader>ca' },
+    { 'n', '<leader>cf' },
+  }
+
+  for _, keymap in ipairs(keymaps) do
+    pcall(vim.keymap.del, keymap[1], keymap[2], { buffer = bufnr })
+  end
 end
 
 -- LSP attach/detach autocommands
