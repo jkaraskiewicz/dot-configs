@@ -45,6 +45,7 @@ return {
         { mode = 'n', keys = '<leader>m',  desc = '+Misc' },
         { mode = 'n', keys = '<leader>s',  desc = '+Search' },
         { mode = 'x', keys = '<leader>s',  desc = '+Search' },
+        { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>t',  desc = '+Toggles' },
         { mode = 'n', keys = '<leader>v',  desc = '+VCS' },
 
