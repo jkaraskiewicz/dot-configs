@@ -29,10 +29,10 @@ return {
       '<leader>sw',
       function()
         local word = vim.fn.expand('<cword>')
-        require('mini.pick').builtin.grep_live(nil, { source = { name = 'Grep: ' .. word } })
         vim.schedule(function()
-          require('mini.pick').set_picker_query(word)
+          MiniPick.set_picker_query(vim.split(word, ''))
         end)
+        MiniPick.builtin.grep_live()
       end,
       desc = 'Search word under cursor',
     },
