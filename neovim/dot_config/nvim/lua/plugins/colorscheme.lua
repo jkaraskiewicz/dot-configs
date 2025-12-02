@@ -13,7 +13,7 @@ return {
     'Verf/deepwhite.nvim',
     'ashish2508/Eezzy.nvim',
     'bdesham/biogoo',
-    'blueshirts/darcula',
+    -- 'blueshirts/darcula',
     'bluz71/vim-moonfly-colors',
     'crusoexia/vim-monokai',
     {
@@ -30,6 +30,7 @@ return {
         })
       end,
     },
+    'doums/darcula',
     'evgenyzinoviev/vim-vendetta',
     'ficcdaf/ashen.nvim',
     'jalvesaq/southernlights',
@@ -42,7 +43,7 @@ return {
     'strange/strange.vim',
     'tiesen243/vercel.nvim',
     'vim-scripts/DarkZen-Color-Scheme',
-    'xiantang/darcula-dark.nvim',
+    -- 'xiantang/darcula-dark.nvim',
 
     default = 'darcula',
   },
