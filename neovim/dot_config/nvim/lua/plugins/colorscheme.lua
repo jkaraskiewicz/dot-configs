@@ -36,6 +36,8 @@ return {
         'morhetz/gruvbox',
         'nxvu699134/vn-night.nvim',
         'pmouraguedes/neodarcula.nvim',
+        'rebelot/kanagawa.nvim',
+        'rose-pine/neovim',
         'sam4llis/nvim-tundra',
         'savq/melange-nvim',
         'strange/strange.vim',
