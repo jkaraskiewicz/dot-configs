@@ -6,12 +6,30 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   opts = {
+    adapters = {
+      http = {
+        openrouter_mistral = function()
+          return require('codecompanion.adapters').extend('openai_compatible', {
+            env = {
+              url = 'https://openrouter.ai/api',
+              api_key = 'OPENROUTER_API_KEY',
+              chat_url = '/v1/chat/completions',
+            },
+            schema = {
+              model = {
+                default = 'mistralai/devstral-2512:free',
+              },
+            },
+          })
+        end,
+      },
+    },
     interactions = {
       chat = {
-        adapter = 'opencode',
+        adapter = 'openrouter_mistral',
       },
       inline = {
-        adapter = 'opencode',
+        adapter = 'openrouter_mistral',
       },
     },
     display = {
@@ -23,6 +41,7 @@ return {
       log_level = 'DEBUG',
     },
   },
+  cmd = { 'CodeCompanion', 'CodeCompanionChat', 'CodeCompanionActions' },
   keys = {
     { '<leader>an', ':CodeCompanionChat<CR>',        mode = { 'n', 'v' }, desc = 'Open chat buffer' },
     { '<leader>at', ':CodeCompanionChat Toggle<CR>', mode = { 'n', 'v' }, desc = 'Toggle chat buffer' },
