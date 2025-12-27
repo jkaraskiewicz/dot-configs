@@ -1,10 +1,13 @@
 local map = vim.keymap.set
 
+-- Configuration constants
+local COLOR_COLUMN_WIDTH = 80
+
 -- Buffers
 map('n', '<Tab>', '<cmd>bnext<cr>', { desc = 'Next buffer' })
 map('n', '<S-Tab>', '<cmd>bprevious<cr>', { desc = 'Previous buffer' })
 map('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Delete buffer' })
-map('n', '<leader>bb', ':Pick buffers<cr>', { desc = 'Buffer picker' })
+map('n', '<leader>bb', function() vim.cmd('Pick buffers') end, { desc = 'Buffer picker' })
 
 -- General
 map('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear search' })
@@ -14,8 +17,8 @@ map('n', ']d', function() vim.diagnostic.goto_next() end, { desc = 'Next diagnos
 map('n', '[d', function() vim.diagnostic.goto_prev() end, { desc = 'Previous diagnostic' })
 map('n', ']h', function() require('mini.diff').goto_hunk('next') end, { desc = 'Next hunk' })
 map('n', '[h', function() require('mini.diff').goto_hunk('prev') end, { desc = 'Previous hunk' })
-map('n', ']q', ':cnext<cr>', { desc = 'Next quickfix' })
-map('n', '[q', ':cprev<cr>', { desc = 'Previous quickfix' })
+map('n', ']q', function() vim.cmd('cnext') end, { desc = 'Next quickfix' })
+map('n', '[q', function() vim.cmd('cprev') end, { desc = 'Previous quickfix' })
 map('n', ']b', '<cmd>bnext<cr>', { desc = 'Next buffer' })
 map('n', '[b', '<cmd>bprevious<cr>', { desc = 'Previous buffer' })
 
@@ -30,7 +33,7 @@ end, { desc = 'Toggle diagnostics' })
 
 map('n', '<leader>tc', function()
   if vim.wo.colorcolumn == '' then
-    vim.wo.colorcolumn = '80'
+    vim.wo.colorcolumn = tostring(COLOR_COLUMN_WIDTH)
   else
     vim.wo.colorcolumn = ''
   end

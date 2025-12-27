@@ -31,7 +31,7 @@ return {
   keys = {
     {
       '<leader>e',
-      ':Neotree toggle<cr>',
+      function() vim.cmd('Neotree toggle') end,
       desc = 'Toggle explorer',
     },
   },

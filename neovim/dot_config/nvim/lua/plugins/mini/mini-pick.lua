@@ -2,9 +2,9 @@ return {
   'echasnovski/mini.pick',
   version = false,
   keys = {
-    { '<leader>ff', ':Pick files<CR>',                desc = 'Files' },
-    { '<leader>fg', ':Pick grep_live<CR>',            desc = 'Live grep' },
-    { '<leader>fl', ':Pick buffer_lines_current<CR>', desc = 'Lines' },
+    { '<leader>ff', function() vim.cmd('Pick files') end,                desc = 'Files' },
+    { '<leader>fg', function() vim.cmd('Pick grep_live') end,            desc = 'Live grep' },
+    { '<leader>fl', function() vim.cmd('Pick buffer_lines_current') end, desc = 'Lines' },
     {
       '<leader>fr',
       function()
@@ -28,6 +28,9 @@ return {
     {
       '<leader>sw',
       function()
+        local ok, MiniPick = pcall(require, 'mini.pick')
+        if not ok then return end
+
         local word = vim.fn.expand('<cword>')
         vim.schedule(function()
           MiniPick.set_picker_query(vim.split(word, ''))
@@ -75,6 +78,7 @@ return {
     local utils = require('utils.utils')
 
     local function on_language_choice(data)
+      local MiniPick = require('mini.pick')
       vim.api.nvim_buf_call(
         vim.fn.bufnr('#'),
         function() data.action() end
@@ -87,6 +91,7 @@ return {
       'n',
       '<leader>bl',
       function()
+        local MiniPick = require('mini.pick')
         MiniPick.start({
           source = {
             items = languages,
@@ -109,6 +114,7 @@ return {
         return
       end
 
+      local MiniPick = require('mini.pick')
       -- Show as usual
       MiniPick.default_show(buf_id, items, query, opts)
 
@@ -142,6 +148,9 @@ return {
     end
 
     -- Choose MiniPick as the default select tool for vim
-    vim.ui.select = MiniPick.ui_select
+    local ok, MiniPick = pcall(require, 'mini.pick')
+    if ok and MiniPick.ui_select then
+      vim.ui.select = MiniPick.ui_select
+    end
   end,
 }

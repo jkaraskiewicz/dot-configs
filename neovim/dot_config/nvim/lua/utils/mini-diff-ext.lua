@@ -120,12 +120,12 @@ end
 local function jj_start_watching_dirstate(buf_id, path)
   local repository = jj_get_repository_dir(path)
   if repository == nil then return false end
-  local watchfile = vim.fs.joinpath(repo, '.jj/working_copy')
+  local watchfile = vim.fs.joinpath(repository, '.jj/working_copy')
 
   local buf_fs_event, timer = vim.loop.new_fs_event(), vim.loop.new_timer()
   local set_ref_text = function()
     vim.system(
-      { 'jj', '--ignore-working-copy', 'file', 'show', '-r', '@-', '\"' .. path .. '\"' },
+      { 'jj', '--ignore-working-copy', 'file', 'show', '-r', '@-', path },
       { cwd = vim.fs.dirname(path), text = true },
       vim.schedule_wrap(function(res)
         local MiniDiff = require('mini.diff')
@@ -141,8 +141,21 @@ local function jj_start_watching_dirstate(buf_id, path)
   end
   buf_fs_event:start(watchfile, { recursive = true }, watch_index)
 
-  invalidate_cache(buf_id)
-  cache[buf_id] = { fs_event = buf_fs_event, timer = timer }
+  invalidate_cache(M.jj_cache, buf_id)
+  M.jj_cache[buf_id] = { fs_event = buf_fs_event, timer = timer }
+
+  set_ref_text()
+end
+
+  local watch_index = function(_, filename, _)
+    if filename ~= 'checkout' then return end
+    timer:stop()
+    timer:start(50, 0, set_ref_text)
+  end
+  buf_fs_event:start(watchfile, { recursive = true }, watch_index)
+
+  invalidate_cache(M.jj_cache, buf_id)
+  M.jj_cache[buf_id] = { fs_event = buf_fs_event, timer = timer }
 
   set_ref_text()
 end

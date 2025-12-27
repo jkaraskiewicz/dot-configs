@@ -41,7 +41,11 @@ end
 -- Find the name of the current function/method (based on the cursor position)
 -- Courtesy of Gemini
 function M.get_current_function_name()
-  local ts_utils = require('nvim-treesitter.ts_utils')
+  local ok, ts_utils = pcall(require, 'nvim-treesitter.ts_utils')
+  if not ok then
+    return ''
+  end
+
   local current_node = ts_utils.get_node_at_cursor()
 
   if not current_node then
@@ -139,9 +143,9 @@ function M.open_buffer_with_content(content, filetype)
   vim.api.nvim_set_current_buf(bufnr)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, split_lines(content))
   if filetype ~= nil then
-    vim.api.nvim_buf_set_option(bufnr, 'filetype', filetype)
+    vim.bo[bufnr].filetype = filetype
   end
-  vim.api.nvim_buf_set_option(bufnr, 'buftype', 'nofile')
+  vim.bo[bufnr].buftype = 'nofile'
   vim.cmd('normal! gg')
 end
 
