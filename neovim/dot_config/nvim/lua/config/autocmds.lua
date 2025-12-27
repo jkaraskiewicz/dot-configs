@@ -29,18 +29,41 @@ local function lsp_on_attach(client, bufnr)
   vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format() end,
     vim.tbl_extend('force', opts, { desc = 'Code format' }))
 
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
+  vim.api.nvim_set_option_value('omnifunc', 'v:lua.MiniCompletion.completefunc_lsp', { buf = bufnr })
 
   if vim.lsp.formatexpr then
-    vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr')
+    vim.api.nvim_set_option_value('formatexpr', 'v:lua.vim.lsp.formatexpr', { buf = bufnr })
   end
 
   if vim.lsp.tagfunc then
-    vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+    vim.api.nvim_set_option_value('tagfunc', 'v:lua.vim.lsp.tagfunc', { buf = bufnr })
   end
 
   if client.server_capabilities.inlayHintProvider then
     vim.lsp.inlay_hint.enable(true)
+  end
+
+  -- Enable code lens (shows "Run Test" buttons, reference counts, etc.)
+  -- Supported by: rust-analyzer, ts_ls, jdtls
+  if client.server_capabilities.codeLensProvider then
+    vim.lsp.codelens.refresh({ bufnr = bufnr })
+
+    -- Debounced refresh to prevent hammering the LSP server
+    local codelens_timer = nil
+    local function refresh_codelens_debounced()
+      if codelens_timer then
+        vim.fn.timer_stop(codelens_timer)
+      end
+      codelens_timer = vim.fn.timer_start(500, function()
+        vim.lsp.codelens.refresh({ bufnr = bufnr })
+        codelens_timer = nil
+      end)
+    end
+
+    vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+      buffer = bufnr,
+      callback = refresh_codelens_debounced,
+    })
   end
 
   vim.diagnostic.config({

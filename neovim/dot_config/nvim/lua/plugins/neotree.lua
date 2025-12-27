@@ -6,7 +6,7 @@ return {
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
-  lazy = false, -- it loads itself lazily
+  lazy = false,
   opts = {
     close_if_last_window = true,
     filesystem = {

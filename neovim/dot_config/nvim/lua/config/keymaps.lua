@@ -36,6 +36,13 @@ map('n', '<leader>tc', function()
   end
 end, { desc = 'Toggle color column' })
 
+map('n', '<leader>ci', function()
+  local current_state = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+  vim.lsp.inlay_hint.enable(not current_state, { bufnr = 0 })
+  local state_text = current_state and 'disabled' or 'enabled'
+  vim.notify('Inlay hints ' .. state_text, vim.log.levels.INFO)
+end, { desc = 'Toggle inlay hints' })
+
 -- Stay in indent mode
 map('x', '<', '<gv', { desc = 'Indent left (Visual)' })
 map('x', '>', '>gv', { desc = 'Indent right (Visual)' })
