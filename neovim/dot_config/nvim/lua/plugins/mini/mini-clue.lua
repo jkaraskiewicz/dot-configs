@@ -37,6 +37,8 @@ return {
         { mode = 'x', keys = '"' },
       },
       clues = {
+        { mode = 'n', keys = '<leader>a',  desc = '+AI' },
+        { mode = 'x', keys = '<leader>a',  desc = '+AI' },
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
         { mode = 'n', keys = '<leader>c',  desc = '+Code' },
         { mode = 'x', keys = '<leader>c',  desc = '+Code' },

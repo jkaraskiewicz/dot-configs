@@ -7,9 +7,10 @@ return {
     local gen_loader = require('mini.snippets').gen_loader
     require('mini.snippets').setup({
       snippets = {
-        -- Load friendly-snippets from runtimepath
+        -- Load friendly-snippets based on current buffer's language
+        -- Automatically finds snippets in 'snippets/' directories in runtimepath
         -- Includes snippets for: Rust, TypeScript, JavaScript, Lua, and many more
-        gen_loader.from_runtime(),
+        gen_loader.from_lang(),
       },
       mappings = {
         expand = '<Tab>',      -- Expand snippet or jump to next tabstop
