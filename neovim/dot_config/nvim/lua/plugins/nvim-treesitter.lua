@@ -22,8 +22,8 @@ return {
         'abs',
         'angular',
         'bash',
-        'css',        -- Stylesheets
-        'dockerfile', -- Dockerfiles
+        'css',
+        'dockerfile',
         'html',
         'java',
         'javascript',
@@ -36,7 +36,7 @@ return {
         'rust',
         'scheme',
         'textproto',
-        'toml',       -- Cargo.toml, config files
+        'toml',
         'typescript',
         'vim',
         'yaml',

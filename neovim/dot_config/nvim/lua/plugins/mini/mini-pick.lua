@@ -39,6 +39,22 @@ return {
       end,
       desc = 'Search word under cursor',
     },
+    {
+      '<leader>sW',
+      function()
+        local ok, MiniPick = pcall(require, 'mini.pick')
+        if not ok then return end
+
+        vim.opt_local.iskeyword:append('-,_')
+        local word = vim.fn.expand('<cword>')
+        vim.opt_local.iskeyword:remove('-,_')
+        vim.schedule(function()
+          MiniPick.set_picker_query(vim.split(word, ''))
+        end)
+        MiniPick.builtin.grep_live()
+      end,
+      desc = 'Search WORD under cursor',
+    },
   },
   init = function()
     -- Center the window
