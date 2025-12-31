@@ -56,7 +56,7 @@ return {
           init_selection = '<CR>',
           node_incremental = '<CR>',
           scope_incremental = '<Tab>',
-          node_decremental = '<BS>',
+          node_decremental = '<S-CR>',
         },
       },
       textobjects = {

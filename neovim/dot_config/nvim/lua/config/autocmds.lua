@@ -31,22 +31,22 @@ vim.diagnostic.config({
 -- Both approaches are available - use direct for speed, picker for exploration
 local LSP_KEYBINDS = {
   -- Navigation pickers
-  { 'n', '<leader>cg', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end, 'Code go to definition' },
-  { 'n', '<leader>cR', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end, 'Code references' },
-  { 'n', '<leader>ci', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end, 'Code implementation' },
-  { 'n', '<leader>cD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end, 'Code declaration' },
+  { 'n', '<leader>cg', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,      'Code go to definition' },
+  { 'n', '<leader>cR', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,      'Code references' },
+  { 'n', '<leader>ci', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,  'Code implementation' },
+  { 'n', '<leader>cD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,     'Code declaration' },
   { 'n', '<leader>ct', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end, 'Code type definition' },
 
   -- Utility pickers
   { 'n', '<leader>cs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end, 'Code symbols' },
-  { 'n', '<leader>cd', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end, 'Code diagnostics' },
-  { 'n', '<leader>cq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end, 'Code quickfix' },
+  { 'n', '<leader>cd', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,  'Code diagnostics' },
+  { 'n', '<leader>cq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end,       'Code quickfix' },
 
   -- Actions
-  { 'n', '<leader>cr', function() vim.lsp.buf.rename() end, 'Code rename' },
-  { 'n', '<leader>ca', function() vim.lsp.buf.code_action() end, 'Code action' },
-  { 'x', '<leader>ca', function() vim.lsp.buf.code_action() end, 'Code action' },
-  { 'n', '<leader>cf', function() vim.lsp.buf.format() end, 'Code format' },
+  { 'n', '<leader>cr', function() vim.lsp.buf.rename() end,                                             'Code rename' },
+  { 'n', '<leader>ca', function() vim.lsp.buf.code_action() end,                                        'Code action' },
+  { 'x', '<leader>ca', function() vim.lsp.buf.code_action() end,                                        'Code action' },
+  { 'n', '<leader>cf', function() vim.lsp.buf.format() end,                                             'Code format' },
 }
 
 local function lsp_on_attach(client, bufnr)
@@ -157,5 +157,14 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'Neo-Tree',
   callback = function()
     vim.b.minicursorword_disable = true
+  end,
+})
+
+-- Show mini.clue window in special buffers
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('MiniClueTriggers', { clear = true }),
+  pattern = { 'neo-tree', 'toggleterm', 'codecompanion' },
+  callback = function()
+    require('mini.clue').ensure_buf_triggers()
   end,
 })

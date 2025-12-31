@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.pick',
+  'nvim-mini/mini.pick',
   version = false,
   keys = {
     { '<leader>ff', function() vim.cmd('Pick files') end,                desc = 'Files' },
@@ -123,7 +123,7 @@ return {
     )
 
     -- Use treesitter syntax highlighting for lines picker
-    -- from https://github.com/echasnovski/mini.nvim/discussions/988
+    -- from https://github.com/nvim-mini/mini.nvim/discussions/988
     local ns_digit_prefix = vim.api.nvim_create_namespace('cur-buf-pick-show')
     local show_cur_buf_lines = function(buf_id, items, query, opts)
       if items == nil or #items == 0 then

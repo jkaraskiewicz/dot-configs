@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.completion',
+  'nvim-mini/mini.completion',
   version = false,
   event = 'VeryLazy',
   config = function()

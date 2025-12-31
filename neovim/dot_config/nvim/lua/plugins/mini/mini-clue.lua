@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.clue',
+  'nvim-mini/mini.clue',
   version = false,
   event = 'VeryLazy',
   config = function()
@@ -10,33 +10,29 @@ return {
         { mode = 'x', keys = '<leader>' },
         -- Built-in completion
         { mode = 'i', keys = '<C-x>' },
+        -- Windows
         { mode = 'n', keys = '<C-w>' },
         -- `g` key
         { mode = 'n', keys = 'g' },
         { mode = 'x', keys = 'g' },
-        -- `z` key
-        { mode = 'n', keys = 'z' },
-        { mode = 'x', keys = 'z' },
         -- `s` key
         { mode = 'n', keys = 's' },
         { mode = 'x', keys = 's' },
-        -- `m` key
+        -- `m` key -- currently not used
         { mode = 'n', keys = 'm' },
         { mode = 'x', keys = 'm' },
-        -- `-` key (delete no yank)
-        { mode = 'n', keys = '-' },
-        { mode = 'x', keys = '-' },
         -- `[`, `]`
         { mode = 'n', keys = '[' },
         { mode = 'n', keys = ']' },
         -- `{`, `}`
         { mode = 'n', keys = '{' },
         { mode = 'n', keys = '}' },
-
+        -- Clipboard
         { mode = 'n', keys = '"' },
         { mode = 'x', keys = '"' },
       },
       clues = {
+        -- '<leader>' prefix
         { mode = 'n', keys = '<leader>a',  desc = '+AI' },
         { mode = 'x', keys = '<leader>a',  desc = '+AI' },
         { mode = 'n', keys = '<leader>b',  desc = '+Buffer' },
@@ -50,7 +46,14 @@ return {
         { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>t',  desc = '+Toggles' },
         { mode = 'n', keys = '<leader>v',  desc = '+VCS' },
+        { mode = 'n', keys = '<leader>z',  desc = '+Surround' },
+        { mode = 'x', keys = '<leader>z',  desc = '+Surround' },
 
+        -- 'g' prefix
+        { mode = 'n', keys = 'gr',  desc = '+LSP Actions' },
+        { mode = 'x', keys = 'gr',  desc = '+LSP Actions' },
+
+        require('mini.clue').gen_clues.square_brackets(),
         require('mini.clue').gen_clues.builtin_completion(),
         require('mini.clue').gen_clues.registers(),
         require('mini.clue').gen_clues.windows(),
@@ -63,5 +66,16 @@ return {
         },
       },
     })
+
+    -- KEYBINDS DESCRIPTIONS OVERRIDES
+    require('mini.clue').set_mapping_desc('n', 'ge', 'Back to word end')
+    require('mini.clue').set_mapping_desc('n', 'gE', 'Back to WORD end')
+    require('mini.clue').set_mapping_desc('n', 'gO', 'Document symbols')
+    require('mini.clue').set_mapping_desc('n', 'gx', 'Open with system')
+    require('mini.clue').set_mapping_desc('n', 'gra', 'LSP Code Action')
+    require('mini.clue').set_mapping_desc('n', 'gri', 'Go to implementation')
+    require('mini.clue').set_mapping_desc('n', 'grn', 'Rename symbol')
+    require('mini.clue').set_mapping_desc('n', 'grr', 'List references')
+    require('mini.clue').set_mapping_desc('n', 'grt', 'Type definition')
   end,
 }

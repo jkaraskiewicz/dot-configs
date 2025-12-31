@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.pairs',
+  'nvim-mini/mini.pairs',
   version = false,
   event = 'VeryLazy',
   config = function()

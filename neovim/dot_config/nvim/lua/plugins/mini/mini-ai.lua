@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.ai',
+  'nvim-mini/mini.ai',
   version = false,
   event = 'VeryLazy',
   config = function()
@@ -12,7 +12,6 @@ return {
         -- Entire buffer content
         B = require('mini.extra').gen_ai_spec.buffer(),
 
-        -- Treesitter-based text objects (language-aware)
         -- Function argument/parameter
         a = gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }),
 
@@ -23,30 +22,16 @@ return {
         m = gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
 
         -- Code block (if/for/while/match)
-        b = gen_spec.treesitter({ a = '@block.outer', i = '@block.inner' }),
-
-        -- Return statement
-        r = gen_spec.treesitter({ a = '@return.outer', i = '@return.inner' }),
-
-        -- Struct field
-        f = gen_spec.treesitter({ a = '@field.outer', i = '@field.outer' }),
-
-        -- Rust-specific text objects
-        -- Struct definition
-        S = gen_spec.treesitter({ a = '@struct.outer', i = '@struct.inner' }),
-
-        -- Trait definition
-        T = gen_spec.treesitter({ a = '@trait.outer', i = '@trait.inner' }),
-
-        -- Impl block
-        i = gen_spec.treesitter({ a = '@impl.outer', i = '@impl.inner' }),
-
-        -- Enum definition
-        e = gen_spec.treesitter({ a = '@enum.outer', i = '@enum.inner' }),
+        -- b = gen_spec.treesitter({ a = '@block.outer', i = '@block.inner' }),
+        b = false, -- Use NeoVim default block object
       },
       mappings = {
-        goto_left = '',
-        goto_right = '',
+        around_next = '', -- Disabled
+        inside_next = '', -- Disabled
+        around_last = '', -- Disabled
+        inside_last = '', -- Disabled
+        goto_left = '', -- Disabled
+        goto_right = '', -- Disabled
       },
       n_lines = 100, -- Reduced from 250 for better performance
     })

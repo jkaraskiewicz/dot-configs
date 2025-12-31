@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.visits',
+  'nvim-mini/mini.visits',
   version = false,
   config = function()
     require('mini.visits').setup({
