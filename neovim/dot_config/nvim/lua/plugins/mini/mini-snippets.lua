@@ -16,7 +16,7 @@ return {
         expand = '<C-j>',    -- Expand snippet or jump to next tabstop
         jump_next = '<C-l>', -- Jump to next tabstop
         jump_prev = '<C-h>', -- Jump to previous tabstop
-        stop = '<C-c>',      -- Stop snippet session
+        stop = '<ESC>',      -- Stop snippet session
       },
     })
 

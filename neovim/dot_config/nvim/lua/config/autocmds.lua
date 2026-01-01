@@ -3,23 +3,6 @@ local CODELENS_DEBOUNCE_MS = 500
 local YANK_HIGHLIGHT_MS = 250
 
 -- =============================================================================
--- DIAGNOSTIC CONFIGURATION (Global - runs once)
--- =============================================================================
--- Note: Diagnostics can be toggled on/off globally with <leader>td
--- This config controls HOW diagnostics are displayed when enabled
-vim.diagnostic.config({
-  virtual_text = false,     -- Disabled (signs/underlines are enough)
-  signs = true,             -- Show signs in the sign column
-  underline = true,         -- Underline problematic text
-  update_in_insert = false, -- Don't update diagnostics in insert mode (can be distracting)
-  severity_sort = true,     -- Sort diagnostics by severity
-  float = {                 -- Configuration for the floating diagnostic window
-    border = 'rounded',
-    source = 'if_many',     -- Shows source if there are multiple diagnostics for the line
-  },
-})
-
--- =============================================================================
 -- LSP KEYBINDS (Buffer-local - set on LspAttach)
 -- =============================================================================
 -- Keybind strategy:
@@ -31,19 +14,19 @@ vim.diagnostic.config({
 -- Both approaches are available - use direct for speed, picker for exploration
 local LSP_KEYBINDS = {
   -- Navigation pickers
-  { 'n', '<leader>cg', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,      'Code go to definition' },
-  { 'n', '<leader>cR', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,      'Code references' },
+  { 'n', '<leader>cd', function() require('mini.extra').pickers.lsp({ scope = 'definition' }) end,      'Code go to definition' },
+  { 'n', '<leader>cr', function() require('mini.extra').pickers.lsp({ scope = 'references' }) end,      'Code references' },
   { 'n', '<leader>ci', function() require('mini.extra').pickers.lsp({ scope = 'implementation' }) end,  'Code implementation' },
   { 'n', '<leader>cD', function() require('mini.extra').pickers.lsp({ scope = 'declaration' }) end,     'Code declaration' },
   { 'n', '<leader>ct', function() require('mini.extra').pickers.lsp({ scope = 'type_definition' }) end, 'Code type definition' },
 
   -- Utility pickers
   { 'n', '<leader>cs', function() require('mini.extra').pickers.lsp({ scope = 'document_symbol' }) end, 'Code symbols' },
-  { 'n', '<leader>cd', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,  'Code diagnostics' },
+  { 'n', '<leader>cG', function() require('mini.extra').pickers.diagnostic({ scope = 'current' }) end,  'Code diagnostics' },
   { 'n', '<leader>cq', function() require('mini.extra').pickers.list({ scope = 'quickfix' }) end,       'Code quickfix' },
 
   -- Actions
-  { 'n', '<leader>cr', function() vim.lsp.buf.rename() end,                                             'Code rename' },
+  { 'n', '<leader>cR', function() vim.lsp.buf.rename() end,                                             'Code rename' },
   { 'n', '<leader>ca', function() vim.lsp.buf.code_action() end,                                        'Code action' },
   { 'x', '<leader>ca', function() vim.lsp.buf.code_action() end,                                        'Code action' },
   { 'n', '<leader>cf', function() vim.lsp.buf.format() end,                                             'Code format' },

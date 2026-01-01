@@ -3,7 +3,7 @@ return {
   version = false,
   cmd = 'Switch',
   keys = {
-    { 'gs', ':Switch<cr>', desc = 'Switch or cycle word' },
+    { 'gS', ':Switch<cr>', desc = 'Switch or cycle word' },
   },
   init = function()
     vim.cmd([[

@@ -38,3 +38,8 @@ map('n', 'X', '"_X', { desc = 'Delete char backward (no yank)' })
 -- Note: Only works for yanked text, not deleted text
 map('x', 'p', '"0p', { desc = 'Paste (keep register)' })
 map('x', 'P', '"0P', { desc = 'Paste before (keep register)' })
+
+-- =============================================================================
+-- LSP
+-- =============================================================================
+map('n', 'grd', function() vim.lsp.buf.definition() end, { desc = 'Go to definition' })
