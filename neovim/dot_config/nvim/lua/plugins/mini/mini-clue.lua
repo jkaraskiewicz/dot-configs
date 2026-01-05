@@ -30,6 +30,9 @@ return {
         -- Clipboard
         { mode = 'n', keys = '"' },
         { mode = 'x', keys = '"' },
+        -- `Z` key
+        { mode = 'n', keys = 'Z' },
+        { mode = 'x', keys = 'Z' },
       },
       clues = {
         -- '<leader>' prefix
@@ -46,8 +49,6 @@ return {
         { mode = 'n', keys = '<leader>S',  desc = '+Sessions' },
         { mode = 'n', keys = '<leader>t',  desc = '+Toggles' },
         { mode = 'n', keys = '<leader>v',  desc = '+VCS' },
-        { mode = 'n', keys = '<leader>z',  desc = '+Surround' },
-        { mode = 'x', keys = '<leader>z',  desc = '+Surround' },
 
         -- 'g' prefix
         { mode = 'n', keys = 'gr',  desc = '+LSP Actions' },
