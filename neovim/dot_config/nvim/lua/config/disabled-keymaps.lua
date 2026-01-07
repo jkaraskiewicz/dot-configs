@@ -33,7 +33,30 @@
 --   )
 -- end
 
+
+-- =============================================================================
+-- BRACKETED KEYBINDS
+-- Disable standard Neovim bracketed keybinds
+-- Later, we will define our own bracketed keybinds
+-- =============================================================================
+for i = string.byte('a'), string.byte('z') do
+  local char = string.char(i)
+  pcall(vim.keymap.del, 'n', '[' .. char)
+  pcall(vim.keymap.del, 'n', ']' .. char)
+end
+
+for i = string.byte('A'), string.byte('Z') do
+  local char = string.char(i)
+  pcall(vim.keymap.del, 'n', '[' .. char)
+  pcall(vim.keymap.del, 'n', ']' .. char)
+end
+
+local other_suffixes = { '<C-L>', '<C-Q>', '<C-T>', '<Space>' }
+for _, char in ipairs(other_suffixes) do
+  pcall(vim.keymap.del, "n", "[" .. char)
+  pcall(vim.keymap.del, "n", "]" .. char)
+end
+
 -- Disable standard keymaps for s and S (can be replaced by cl and cc) - for Flash.nvim
 vim.keymap.set('n', 's', '<Nop>', { noremap = true, silent = true })
 vim.keymap.set('n', 'S', '<Nop>', { noremap = true, silent = true })
-

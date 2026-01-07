@@ -54,7 +54,6 @@ return {
         { mode = 'n', keys = 'gr',  desc = '+LSP Actions' },
         { mode = 'x', keys = 'gr',  desc = '+LSP Actions' },
 
-        require('mini.clue').gen_clues.square_brackets(),
         require('mini.clue').gen_clues.builtin_completion(),
         require('mini.clue').gen_clues.registers(),
         require('mini.clue').gen_clues.windows(),
@@ -71,6 +70,8 @@ return {
     -- KEYBINDS DESCRIPTIONS OVERRIDES
     require('mini.clue').set_mapping_desc('n', 'ge', 'Back to word end')
     require('mini.clue').set_mapping_desc('n', 'gE', 'Back to WORD end')
+    require('mini.clue').set_mapping_desc('x', 'ge', 'Back to word end')
+    require('mini.clue').set_mapping_desc('x', 'gE', 'Back to WORD end')
     require('mini.clue').set_mapping_desc('n', 'gO', 'Document symbols')
     require('mini.clue').set_mapping_desc('n', 'gx', 'Open with system')
     require('mini.clue').set_mapping_desc('n', 'gra', 'LSP Code Action')

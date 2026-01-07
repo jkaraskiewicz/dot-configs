@@ -81,22 +81,22 @@ return {
             ['[s'] = { query = '@struct.outer', desc = 'Previous struct' },
             ['[t'] = { query = '@trait.outer', desc = 'Previous trait' },
           },
-          goto_next_end = {
-            ['}m'] = { query = '@function.outer', desc = 'Next function end' },
-            ['}c'] = { query = '@call.outer', desc = 'Next call end' },
-          },
-          goto_previous_end = {
-            ['{m'] = { query = '@function.outer', desc = 'Previous function end' },
-            ['{c'] = { query = '@call.outer', desc = 'Previous call end' },
-          },
+          -- goto_next_end = {
+          --   ['}m'] = { query = '@function.outer', desc = 'Next function end' },
+          --   ['}c'] = { query = '@call.outer', desc = 'Next call end' },
+          -- },
+          -- goto_previous_end = {
+          --   ['{m'] = { query = '@function.outer', desc = 'Previous function end' },
+          --   ['{c'] = { query = '@call.outer', desc = 'Previous call end' },
+          -- },
         },
         swap = {
           enable = true,
           swap_next = {
-            [']a'] = { query = '@parameter.inner', desc = 'Swap argument with next' },
+            ['}a'] = { query = '@parameter.inner', desc = 'Swap argument with next' },
           },
           swap_previous = {
-            ['[a'] = { query = '@parameter.inner', desc = 'Swap argument with previous' },
+            ['{a'] = { query = '@parameter.inner', desc = 'Swap argument with previous' },
           },
         },
       },

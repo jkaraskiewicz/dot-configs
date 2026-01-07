@@ -12,7 +12,7 @@ return {
         'crusoexia/vim-monokai',
         {
           'datsfilipe/vesper.nvim',
-          before = function(theme)
+          before = function()
             require('vesper').setup({
               italics = {
                 comments = false,
