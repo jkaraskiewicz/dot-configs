@@ -12,7 +12,7 @@ opt.sidescrolloff = 8 -- Keep 8 columns visible left/right of cursor
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- How to show invisible characters
 opt.cursorline = true -- Highlight the current line
-opt.cmdheight = 0 -- Set to 0 to hide the command line (for messages)
+opt.cmdheight = 1 -- Set to 0 to hide the command line (for messages)
 
 -- =============================================================================
 -- BEHAVIOR
