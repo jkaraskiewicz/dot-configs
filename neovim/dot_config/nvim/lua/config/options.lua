@@ -5,7 +5,7 @@ local opt = vim.opt
 -- =============================================================================
 opt.termguicolors = true -- Enable true color support
 opt.number = true -- Show line numbers
-opt.relativenumber = true -- Show relative line numbers
+opt.relativenumber = false -- Do not use relative line numbers
 opt.signcolumn = 'yes' -- Always show the sign column
 opt.scrolloff = 12 -- Keep 12 lines visible above/below cursor
 opt.sidescrolloff = 8 -- Keep 8 columns visible left/right of cursor
