@@ -65,9 +65,9 @@ local function lsp_on_attach(client, bufnr)
   if client.server_capabilities.codeLensProvider then
     -- Initial refresh (deferred to avoid blocking LSP attach)
     vim.schedule(function()
-      local ok = pcall(vim.lsp.codelens.refresh, { bufnr = bufnr })
+      local ok = pcall(vim.lsp.codelens.enable, true, { bufnr = bufnr })
       if not ok then
-        vim.notify('Failed to refresh code lens', vim.log.levels.WARN)
+        vim.notify('Failed to enable code lens', vim.log.levels.WARN)
       end
     end)
 
@@ -78,7 +78,7 @@ local function lsp_on_attach(client, bufnr)
         vim.fn.timer_stop(codelens_timer)
       end
       codelens_timer = vim.fn.timer_start(CODELENS_DEBOUNCE_MS, function()
-        pcall(vim.lsp.codelens.refresh, { bufnr = bufnr })
+        pcall(vim.lsp.codelens.enable, true, { bufnr = bufnr })
         codelens_timer = nil
       end)
     end
