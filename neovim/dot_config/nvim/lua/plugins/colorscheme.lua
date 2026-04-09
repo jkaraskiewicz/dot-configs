@@ -31,6 +31,7 @@ return {
         'jalvesaq/southernlights',
         'katawful/kat.nvim',
         'kepano/flexoki',
+        'miikanissi/modus-themes.nvim',
         'Mofiqul/dracula.nvim',
         'Mofiqul/vscode.nvim',
         'morhetz/gruvbox',
