@@ -37,7 +37,7 @@ require('lazy').setup({
 
 -- Experimental messages UI
 if not vim.g.neovide then
-  require('vim._extui').enable({
+  require('vim._core.ui2').enable({
     enable = true,
     msg = {
       target = 'cmd',
